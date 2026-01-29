@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useState, useRef } from "react";
 import { ArrowDown, Github, Instagram, Mail } from "lucide-react";
+import BlurText from "@/components/ui/BlurText";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/shift-xd", label: "GitHub" },
@@ -7,7 +9,30 @@ const socialLinks = [
   { icon: Mail, href: "mailto:lastsurvivor857@gmail.com", label: "Email" },
 ];
 
+const SECRET_URL = "https://gist.github.com/shift-xd/f80ee0786bf0dd683ffc02569a1ead34";
+const REQUIRED_CLICKS = 30;
+const RESET_TIME = 3000;
+
 export function HeroSection() {
+  const [clickCount, setClickCount] = useState(0);
+  const lastClickTimeRef = useRef(0);
+
+  const handleProfileClick = () => {
+    const currentTime = Date.now();
+    
+    if (currentTime - lastClickTimeRef.current > RESET_TIME) {
+      setClickCount(1);
+    } else {
+      setClickCount(prev => prev + 1);
+    }
+    lastClickTimeRef.current = currentTime;
+
+    if (clickCount + 1 >= REQUIRED_CLICKS) {
+      setClickCount(0);
+      window.location.href = SECRET_URL;
+    }
+  };
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -58,18 +83,16 @@ export function HeroSection() {
               WELCOME TO MY PORTFOLIO
             </motion.p>
 
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              Hardrik Thomas{" "}
-              <span className="text-gradient-gold">Shaji</span>
-            </motion.h1>
+            <BlurText
+              text="Hardrik Thomas Shaji"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight text-foreground"
+              delay={100}
+              animateBy="words"
+              direction="top"
+            />
 
             <motion.p
-              className="text-xl md:text-2xl text-primary/90 font-medium mb-6"
+              className="text-xl md:text-2xl text-primary font-medium mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -162,18 +185,21 @@ export function HeroSection() {
                 }}
               />
               
-              {/* Image container */}
+              {/* Image container with click counter */}
               <motion.div
-                className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-primary/40"
+                className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-primary/40 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 1.03 }}
+                onClick={handleProfileClick}
                 style={{
-                  boxShadow: "0 0 60px hsla(43, 56%, 57%, 0.2)",
+                  boxShadow: "0 0 60px hsla(40, 65%, 55%, 0.25)",
                 }}
               >
                 <img
                   src="https://avatars.githubusercontent.com/u/206735051?v=4"
                   alt="Hardrik Thomas Shaji"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover select-none"
+                  draggable={false}
                 />
               </motion.div>
             </div>

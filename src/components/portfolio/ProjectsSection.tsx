@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Stethoscope, Zap, Shield, Bot, Wrench, Github } from "lucide-react";
+import BlurText from "@/components/ui/BlurText";
 
 const projects = [
   {
@@ -68,9 +69,12 @@ export function ProjectsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gradient-gold mb-4">
-            My Projects
-          </h2>
+          <BlurText
+            text="My Projects"
+            className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center"
+            delay={80}
+            animateBy="characters"
+          />
           <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         </motion.div>
 
