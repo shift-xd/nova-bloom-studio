@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import BlurText from "@/components/ui/BlurText";
 
 const stats = [
   { label: "Age", value: "18" },
@@ -42,9 +43,12 @@ export function AboutSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gradient-gold mb-4">
-            About Me
-          </h2>
+          <BlurText
+            text="About Me"
+            className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center"
+            delay={80}
+            animateBy="characters"
+          />
           <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         </motion.div>
 
@@ -93,7 +97,7 @@ export function AboutSection() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: 0.4 + index * 0.1, duration: 0.4 }}
-                  whileHover={{ scale: 1.05, backgroundColor: "hsla(43, 56%, 57%, 0.1)" }}
+                  whileHover={{ scale: 1.05, backgroundColor: "hsla(40, 65%, 55%, 0.1)" }}
                 >
                   <div className="text-2xl md:text-3xl font-heading font-bold text-primary mb-2">
                     {stat.value}

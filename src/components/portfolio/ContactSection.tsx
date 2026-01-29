@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Instagram, Github, Send } from "lucide-react";
 import { toast } from "sonner";
+import BlurText from "@/components/ui/BlurText";
 
 const contactMethods = [
   {
@@ -62,9 +63,12 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-gradient-gold mb-4">
-            Get In Touch
-          </h2>
+          <BlurText
+            text="Get In Touch"
+            className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center"
+            delay={80}
+            animateBy="characters"
+          />
           <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         </motion.div>
 
@@ -161,7 +165,7 @@ export function ContactSection() {
             <motion.button
               type="submit"
               className="w-full py-3.5 bg-primary text-primary-foreground font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
-              whileHover={{ scale: 1.02, boxShadow: "0 0 30px hsla(43, 56%, 57%, 0.3)" }}
+              whileHover={{ scale: 1.02, boxShadow: "0 0 30px hsla(40, 65%, 55%, 0.3)" }}
               whileTap={{ scale: 0.98 }}
             >
               Send Message

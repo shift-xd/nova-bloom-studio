@@ -6,10 +6,14 @@ import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { Footer } from "@/components/portfolio/Footer";
 import { SectionDivider } from "@/components/portfolio/SectionDivider";
+import { VideoBackground } from "@/components/portfolio/VideoBackground";
+import { FloatingParticles } from "@/components/portfolio/FloatingParticles";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden">
+      <VideoBackground />
+      <FloatingParticles />
       <Header />
       <main>
         <HeroSection />
