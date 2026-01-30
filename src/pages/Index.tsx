@@ -2,7 +2,8 @@ import { Header } from "@/components/portfolio/Header";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { AboutSection } from "@/components/portfolio/AboutSection";
 import { InterestsSection } from "@/components/portfolio/InterestsSection";
-import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
+import { BouncingProjectCards } from "@/components/portfolio/BouncingProjectCards";
+import { InstagramSection } from "@/components/portfolio/InstagramSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { Footer } from "@/components/portfolio/Footer";
 import { SectionDivider } from "@/components/portfolio/SectionDivider";
@@ -15,16 +16,30 @@ const Index = () => {
       <VideoBackground />
       <FloatingParticles />
       <Header />
-      <main>
-        <HeroSection />
+      <main className="flex flex-col items-center">
+        <div className="w-full">
+          <HeroSection />
+        </div>
         <SectionDivider />
-        <AboutSection />
+        <div className="w-full">
+          <AboutSection />
+        </div>
         <SectionDivider />
-        <InterestsSection />
+        <div className="w-full">
+          <InterestsSection />
+        </div>
         <SectionDivider />
-        <ProjectsSection />
+        <div className="w-full">
+          <BouncingProjectCards />
+        </div>
         <SectionDivider />
-        <ContactSection />
+        <div className="w-full">
+          <InstagramSection />
+        </div>
+        <SectionDivider />
+        <div className="w-full">
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>

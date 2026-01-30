@@ -8,38 +8,32 @@ const interests = [
   {
     icon: Code,
     title: "Coding",
-    description:
-      "Creating efficient and elegant solutions through programming. I enjoy working with various languages and frameworks to bring ideas to life.",
+    description: "Creating efficient and elegant solutions through programming with various languages and frameworks.",
   },
   {
     icon: Box,
     title: "3D Modeling",
-    description:
-      "Designing and creating three-dimensional digital models for various applications, from visualization to 3D printing.",
+    description: "Designing three-dimensional digital models for visualization and 3D printing applications.",
   },
   {
     icon: Cpu,
     title: "PCB Designing",
-    description:
-      "Designing printed circuit boards that bring electronic projects to life with precision and functionality.",
+    description: "Designing printed circuit boards that bring electronic projects to life with precision.",
   },
   {
     icon: Palette,
     title: "Creative Websites",
-    description:
-      "Building visually appealing and user-friendly websites that provide exceptional digital experiences.",
+    description: "Building visually appealing and user-friendly websites with exceptional experiences.",
   },
   {
     icon: Settings,
     title: "Functional Design",
-    description:
-      "Creating designs that not only look good but also work effectively and efficiently for their intended purpose.",
+    description: "Creating designs that work effectively and efficiently for their intended purpose.",
   },
   {
     icon: Lightbulb,
     title: "Ideology",
-    description:
-      "Exploring and developing conceptual frameworks that drive innovation and creative problem-solving.",
+    description: "Exploring conceptual frameworks that drive innovation and creative problem-solving.",
   },
 ];
 
@@ -48,66 +42,57 @@ export function InterestsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="interests" className="py-24 relative" ref={ref}>
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/5 to-transparent" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="interests" className="py-16 md:py-24 relative" ref={ref}>
+      <div className="container mx-auto px-4 md:px-6">
         {/* Section Title */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <BlurText
             text="My Interests"
-            className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center"
+            className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center flex flex-wrap"
             delay={80}
             animateBy="characters"
           />
           <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         </motion.div>
 
-        {/* Interests Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Interests Grid - Centered */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
           {interests.map((interest, index) => (
             <motion.div
               key={interest.title}
-              className="glass-card rounded-2xl p-6 relative overflow-hidden group cursor-pointer"
+              className="glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-primary/10 text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              whileHover={{ y: -5, borderColor: "hsla(40, 65%, 55%, 0.3)" }}
             >
-              {/* Left accent bar */}
+              {/* Accent bar */}
               <motion.div
-                className="absolute left-0 top-0 bottom-0 w-1 bg-primary/50"
+                className="absolute left-0 top-0 w-1 h-full bg-primary/40"
                 initial={{ scaleY: 0 }}
-                animate={isInView ? { scaleY: 1 } : {}}
-                transition={{ delay: index * 0.1 + 0.3, duration: 0.4 }}
+                whileHover={{ scaleY: 1 }}
+                transition={{ duration: 0.3 }}
               />
 
-              {/* Icon */}
               <motion.div
-                className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors"
+                className="inline-flex p-3 rounded-xl bg-primary/10 mb-4"
                 whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.2 }}
               >
-                <interest.icon className="w-7 h-7 text-primary" />
+                <interest.icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
               </motion.div>
 
-              {/* Content */}
-              <h3 className="text-xl font-heading font-semibold text-primary mb-3">
+              <h3 className="text-lg md:text-xl font-heading font-semibold text-primary mb-2 md:mb-3">
                 {interest.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">
                 {interest.description}
               </p>
-
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
-              </div>
             </motion.div>
           ))}
         </div>
