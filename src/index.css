@@ -216,6 +216,53 @@
     0%, 100% { box-shadow: 0 0 20px hsla(43, 56%, 57%, 0.2); }
     50% { box-shadow: 0 0 40px hsla(43, 56%, 57%, 0.4); }
   }
+
+  /* Custom border styles */
+  .custom-border {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, hsla(40, 65%, 55%, 0.4), hsla(200, 70%, 50%, 0.2)) 1;
+  }
+
+  .custom-border-glow {
+    position: relative;
+  }
+
+  .custom-border-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, hsla(40, 65%, 55%, 0.3), hsla(200, 70%, 50%, 0.2), hsla(40, 65%, 55%, 0.3));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .custom-border-glow:hover::before {
+    opacity: 1;
+  }
+
+  /* Jelly Triangle Loader Keyframes */
+  @keyframes jelly-triangulate {
+    0%, 100% {
+      transform: none;
+    }
+    33.333% {
+      transform: translate(120%, 175%);
+    }
+    66.666% {
+      transform: translate(-95%, 175%);
+    }
+  }
+
+  @keyframes jelly-grow {
+    0%, 85%, 100% {
+      transform: scale(1.5);
+    }
+    50%, 60% {
+      transform: scale(0);
+    }
+  }
 }
 
 @layer utilities {
