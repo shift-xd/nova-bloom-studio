@@ -9,6 +9,7 @@ import { Footer } from "@/components/portfolio/Footer";
 import { SectionDivider } from "@/components/portfolio/SectionDivider";
 import { VideoBackground } from "@/components/portfolio/VideoBackground";
 import { FloatingParticles } from "@/components/portfolio/FloatingParticles";
+import { SocialDock } from "@/components/portfolio/SocialDock";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <VideoBackground />
       <FloatingParticles />
       <Header />
+      <SocialDock />
       <main className="flex flex-col items-center">
         <div className="w-full">
           <HeroSection />

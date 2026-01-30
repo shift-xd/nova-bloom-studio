@@ -1,53 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Instagram, ExternalLink, Heart, MessageCircle, Users } from "lucide-react";
+import { Instagram, ExternalLink } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
-
-const instagramPosts = [
-  {
-    id: 1,
-    type: "image",
-    placeholder: "🎮 Gaming Setup",
-    likes: 142,
-    comments: 23,
-  },
-  {
-    id: 2,
-    type: "image",
-    placeholder: "💻 Code Session",
-    likes: 256,
-    comments: 45,
-  },
-  {
-    id: 3,
-    type: "image",
-    placeholder: "🎨 3D Artwork",
-    likes: 189,
-    comments: 31,
-  },
-  {
-    id: 4,
-    type: "image",
-    placeholder: "⚡ PCB Design",
-    likes: 324,
-    comments: 67,
-  },
-  {
-    id: 5,
-    type: "image",
-    placeholder: "🎯 New Project",
-    likes: 412,
-    comments: 89,
-  },
-  {
-    id: 6,
-    type: "image",
-    placeholder: "✨ Late Night",
-    likes: 198,
-    comments: 42,
-  },
-];
 
 export function InstagramSection() {
   const ref = useRef(null);
@@ -61,15 +16,15 @@ export function InstagramSection() {
     >
       {/* Gradient Merge Effect - Top */}
       <div 
-        className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute top-0 left-0 right-0 h-48 pointer-events-none z-10"
         style={{
-          background: "linear-gradient(to bottom, hsl(var(--background)), transparent)",
+          background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background)) 20%, transparent 100%)",
         }}
       />
       
       {/* Instagram-style gradient background */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-30"
         style={{
           background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
         }}
@@ -79,19 +34,27 @@ export function InstagramSection() {
       <div 
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at center, hsla(40, 65%, 55%, 0.05) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, hsla(40, 65%, 55%, 0.08) 0%, transparent 70%)",
         }}
       />
 
       {/* Gradient Merge Effect - Bottom */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-10"
         style={{
-          background: "linear-gradient(to top, hsl(var(--background)), transparent)",
+          background: "linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--background)) 20%, transparent 100%)",
         }}
       />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      {/* Fog/Vignette effect on sides */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 40%, hsl(var(--background)) 100%)",
+        }}
+      />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-20">
         {/* Section Title */}
         <motion.div
           className="text-center mb-12 md:mb-16"
@@ -113,7 +76,7 @@ export function InstagramSection() {
 
         {/* Profile Card */}
         <motion.div
-          className="max-w-md mx-auto mb-12 glass-card rounded-2xl p-6 border border-primary/20"
+          className="max-w-md mx-auto mb-8 glass-card rounded-2xl p-6 border border-primary/20"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -159,39 +122,80 @@ export function InstagramSection() {
           </div>
         </motion.div>
 
-        {/* Posts Grid - Mobile Optimized */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-4 max-w-3xl mx-auto">
-          {instagramPosts.map((post, index) => (
-            <motion.a
-              key={post.id}
+        {/* Instagram Embed Container */}
+        <motion.div
+          className="max-w-lg mx-auto relative"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
+          {/* Gradient border frame */}
+          <div 
+            className="absolute -inset-1 rounded-2xl opacity-60 blur-sm"
+            style={{
+              background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
+            }}
+          />
+          
+          {/* Dark mode styled container */}
+          <div className="relative bg-[#121212] rounded-2xl overflow-hidden border border-white/10">
+            {/* Instagram profile header styled */}
+            <div className="p-4 border-b border-white/10">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-pink-500/50">
+                  <img
+                    src="https://avatars.githubusercontent.com/u/206735051?v=4"
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="text-white font-semibold text-sm">_shift_xd_</p>
+                  <p className="text-gray-400 text-xs">Hardrik Thomas Shaji</p>
+                </div>
+                <a
+                  href="https://www.instagram.com/_shift_xd_/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold rounded-lg transition-colors"
+                >
+                  Follow
+                </a>
+              </div>
+            </div>
+
+            {/* Grid of posts placeholder with actual Instagram aesthetic */}
+            <div className="grid grid-cols-3 gap-0.5 bg-black/50">
+              {[
+                "🎮", "💻", "🎨", 
+                "⚡", "🎯", "✨"
+              ].map((emoji, index) => (
+                <a
+                  key={index}
+                  href="https://www.instagram.com/_shift_xd_/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-3xl hover:opacity-75 transition-opacity relative group"
+                >
+                  <span>{emoji}</span>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <ExternalLink size={20} className="text-white" />
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* View more link */}
+            <a
               href="https://www.instagram.com/_shift_xd_/"
               target="_blank"
               rel="noopener noreferrer"
-              className="relative aspect-square glass-card rounded-lg md:rounded-xl overflow-hidden group border border-primary/10"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.1 * index, duration: 0.4 }}
-              whileHover={{ scale: 1.02 }}
+              className="block p-4 text-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors border-t border-white/10"
             >
-              {/* Placeholder content */}
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/60 to-muted/40 flex items-center justify-center">
-                <span className="text-2xl md:text-4xl">{post.placeholder.split(" ")[0]}</span>
-              </div>
-              
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 md:gap-6">
-                <div className="flex items-center gap-1 text-white text-xs md:text-sm">
-                  <Heart size={14} fill="white" />
-                  <span>{post.likes}</span>
-                </div>
-                <div className="flex items-center gap-1 text-white text-xs md:text-sm">
-                  <MessageCircle size={14} />
-                  <span>{post.comments}</span>
-                </div>
-              </div>
-            </motion.a>
-          ))}
-        </div>
+              View all posts on Instagram →
+            </a>
+          </div>
+        </motion.div>
 
         {/* Follow Button */}
         <motion.div

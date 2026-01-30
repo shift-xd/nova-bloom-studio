@@ -14,8 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["'Space Grotesk'", "sans-serif"],
+        heading: ["'Cinzel'", "'Playfair Display'", "serif"],
         body: ["'Outfit'", "sans-serif"],
+        display: ["'Cormorant Garamond'", "'Playfair Display'", "serif"],
+        sans: ["'Space Grotesk'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

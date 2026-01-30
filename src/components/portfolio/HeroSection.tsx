@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { ArrowDown, Github, Instagram, Mail } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
+import RotatingText from "@/components/ui/RotatingText";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/shift-xd", label: "GitHub" },
@@ -44,7 +45,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+    <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden px-4">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
       
@@ -91,14 +92,22 @@ export function HeroSection() {
               direction="top"
             />
 
-            <motion.p
-              className="text-lg md:text-xl lg:text-2xl text-primary font-medium mb-4 md:mb-6"
+            <motion.div
+              className="text-lg md:text-xl lg:text-2xl text-primary font-medium mb-4 md:mb-6 flex items-center gap-2 justify-center lg:justify-start flex-wrap"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Developer • Designer • Creator
-            </motion.p>
+              <span className="text-foreground/80">Passionate about</span>
+              <RotatingText
+                texts={["3D Modeling", "Coding", "PCB Designing", "Web Design", "Electronics"]}
+                mainClassName="text-primary font-bold"
+                staggerFrom="first"
+                staggerDuration={0.025}
+                rotationInterval={2500}
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              />
+            </motion.div>
 
             <motion.p
               className="text-muted-foreground text-sm md:text-base lg:text-lg max-w-xl mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed px-2"

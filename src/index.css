@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
-/* Hardrik Portfolio Design System - Dark Hollow Knight Aesthetic */
+/* Hardrik Portfolio Design System - Dark Hollow Knight Aesthetic with Cinematic Fonts */
 
 @layer base {
   :root {
@@ -241,32 +241,93 @@
   .custom-border-glow:hover::before {
     opacity: 1;
   }
-
-  /* Jelly Triangle Loader Keyframes */
-  @keyframes jelly-triangulate {
-    0%, 100% {
-      transform: none;
-    }
-    33.333% {
-      transform: translate(120%, 175%);
-    }
-    66.666% {
-      transform: translate(-95%, 175%);
-    }
+  
+  /* Cinematic text styling */
+  .font-cinematic {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    letter-spacing: 0.05em;
   }
 
-  @keyframes jelly-grow {
-    0%, 85%, 100% {
-      transform: scale(1.5);
-    }
-    50%, 60% {
-      transform: scale(0);
-    }
+  .font-elegant {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  /* Gradient border animation */
+  .gradient-border-animated {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+
+  .gradient-border-animated::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: calc(var(--radius) + 2px);
+    background: linear-gradient(45deg, 
+      hsla(40, 65%, 55%, 0.5), 
+      hsla(200, 70%, 50%, 0.3), 
+      hsla(280, 60%, 50%, 0.3),
+      hsla(40, 65%, 55%, 0.5)
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 8s ease infinite;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Instagram gradient border */
+  .instagram-gradient-border {
+    position: relative;
+  }
+
+  .instagram-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045, #833ab4);
+    background-size: 300% 300%;
+    animation: instagram-gradient 6s ease infinite;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0.6;
+  }
+
+  @keyframes instagram-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Card hover lift effect */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elevated);
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Cinematic gradient text */
+  .text-gradient-cinematic {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(40, 75%, 65%), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
