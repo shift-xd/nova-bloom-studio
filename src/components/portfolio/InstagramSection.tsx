@@ -1,12 +1,33 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Instagram, ExternalLink } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
 
 export function InstagramSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [embedLoaded, setEmbedLoaded] = useState(false);
+
+  useEffect(() => {
+    // Load Instagram embed script
+    const script = document.createElement('script');
+    script.src = 'https://www.instagram.com/embed.js';
+    script.async = true;
+    script.onload = () => {
+      // @ts-ignore
+      if (window.instgrm) {
+        // @ts-ignore
+        window.instgrm.Embeds.process();
+      }
+      setEmbedLoaded(true);
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup if needed
+    };
+  }, []);
 
   return (
     <section 
@@ -22,20 +43,26 @@ export function InstagramSection() {
         }}
       />
       
-      {/* Instagram-style gradient background */}
+      {/* Fun playful gradient background */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-40"
         style={{
-          background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
+          background: "linear-gradient(135deg, hsla(330, 85%, 60%, 0.3) 0%, hsla(270, 60%, 60%, 0.2) 30%, hsla(175, 80%, 45%, 0.2) 70%, hsla(30, 90%, 60%, 0.3) 100%)",
         }}
       />
       
-      {/* Hollow Knight themed overlay */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: "radial-gradient(ellipse at center, hsla(40, 65%, 55%, 0.08) 0%, transparent 70%)",
-        }}
+      {/* Floating blob decorations */}
+      <motion.div
+        className="absolute -top-20 -right-20 w-64 h-64 blob opacity-20"
+        style={{ background: "linear-gradient(135deg, hsl(330, 85%, 60%), hsl(270, 60%, 60%))" }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute -bottom-20 -left-20 w-48 h-48 blob opacity-20"
+        style={{ background: "linear-gradient(135deg, hsl(175, 80%, 45%), hsl(200, 70%, 50%))" }}
+        animate={{ rotate: -360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
 
       {/* Gradient Merge Effect - Bottom */}
@@ -46,11 +73,11 @@ export function InstagramSection() {
         }}
       />
 
-      {/* Fog/Vignette effect on sides */}
+      {/* Fog/Vignette effect on sides - curvy gradient */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, transparent 40%, hsl(var(--background)) 100%)",
+          background: "radial-gradient(ellipse at center, transparent 30%, hsl(var(--background)) 100%)",
         }}
       />
 
@@ -63,141 +90,165 @@ export function InstagramSection() {
           transition={{ duration: 0.6 }}
         >
           <BlurText
-            text="Instagram Feed"
+            text="✨ Instagram Feed ✨"
             className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center flex flex-wrap"
             delay={80}
             animateBy="characters"
           />
-          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6" />
-          <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-base px-4">
-            Follow my journey and see what I'm working on
+          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 rounded-full" />
+          <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-base px-4 font-body">
+            Follow my journey and see what I'm working on! 🚀
           </p>
         </motion.div>
 
-        {/* Profile Card */}
+        {/* Profile Card - Curvy and Fun */}
         <motion.div
-          className="max-w-md mx-auto mb-8 glass-card rounded-2xl p-6 border border-primary/20"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          className="max-w-md mx-auto mb-8 glass-card p-6 border-2 border-primary/30 gradient-border-animated"
+          initial={{ opacity: 0, scale: 0.95, rotate: -2 }}
+          animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+          transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 200 }}
         >
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-primary/40">
+            <motion.div 
+              className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-3 border-primary/50 blob"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
               <img
                 src="https://avatars.githubusercontent.com/u/206735051?v=4"
                 alt="Instagram Profile"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </motion.div>
             <div className="flex-1">
-              <h3 className="font-heading font-bold text-lg text-foreground">@_shift_xd_</h3>
-              <p className="text-muted-foreground text-sm">Hardrik Thomas Shaji</p>
+              <h3 className="font-elegant text-xl text-foreground">@_shift_xd_</h3>
+              <p className="text-muted-foreground text-sm font-body">Hardrik Thomas Shaji</p>
             </div>
             <motion.a
               href="https://www.instagram.com/_shift_xd_/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="p-3 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white squish"
+              whileHover={{ scale: 1.15, rotate: 10 }}
+              whileTap={{ scale: 0.9 }}
             >
               <Instagram size={20} />
             </motion.a>
           </div>
           
-          {/* Stats */}
-          <div className="flex justify-around text-center border-t border-primary/10 pt-4">
-            <div>
-              <p className="font-bold text-foreground text-lg">24+</p>
-              <p className="text-muted-foreground text-xs">Posts</p>
-            </div>
-            <div>
-              <p className="font-bold text-foreground text-lg">500+</p>
-              <p className="text-muted-foreground text-xs">Followers</p>
-            </div>
-            <div>
-              <p className="font-bold text-foreground text-lg">200+</p>
-              <p className="text-muted-foreground text-xs">Following</p>
-            </div>
+          {/* Stats with fun styling */}
+          <div className="flex justify-around text-center border-t-2 border-primary/20 pt-4 rounded-lg">
+            {[
+              { value: "24+", label: "Posts", emoji: "📸" },
+              { value: "500+", label: "Followers", emoji: "💖" },
+              { value: "200+", label: "Following", emoji: "👀" }
+            ].map((stat, i) => (
+              <motion.div 
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.4 + i * 0.1 }}
+                className="text-center"
+              >
+                <p className="font-bold text-foreground text-lg">{stat.emoji} {stat.value}</p>
+                <p className="text-muted-foreground text-xs font-body">{stat.label}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Instagram Embed Container */}
+        {/* Actual Instagram Embed */}
         <motion.div
           className="max-w-lg mx-auto relative"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          {/* Gradient border frame */}
+          {/* Gradient fog border */}
           <div 
-            className="absolute -inset-1 rounded-2xl opacity-60 blur-sm"
+            className="absolute -inset-6 rounded-[3rem] pointer-events-none z-10"
             style={{
-              background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
+              background: `
+                radial-gradient(ellipse at top, hsla(330, 85%, 60%, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, hsla(175, 80%, 45%, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at left, hsla(270, 60%, 60%, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at right, hsla(30, 90%, 60%, 0.3) 0%, transparent 50%)
+              `,
+              filter: "blur(20px)",
             }}
           />
           
-          {/* Dark mode styled container */}
-          <div className="relative bg-[#121212] rounded-2xl overflow-hidden border border-white/10">
-            {/* Instagram profile header styled */}
-            <div className="p-4 border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-pink-500/50">
-                  <img
-                    src="https://avatars.githubusercontent.com/u/206735051?v=4"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
+          {/* Instagram Embed Container */}
+          <div className="relative bg-card rounded-[2rem] overflow-hidden border-2 border-primary/20 shadow-xl">
+            {/* Instagram profile embed - using blockquote for actual embed */}
+            <div className="p-4 min-h-[450px] flex items-center justify-center">
+              <blockquote 
+                className="instagram-media" 
+                data-instgrm-permalink="https://www.instagram.com/_shift_xd_/"
+                data-instgrm-version="14"
+                style={{
+                  background: 'transparent',
+                  border: 0,
+                  borderRadius: '2rem',
+                  boxShadow: 'none',
+                  margin: '0 auto',
+                  maxWidth: '100%',
+                  minWidth: '280px',
+                  padding: 0,
+                  width: '100%'
+                }}
+              >
+                <div style={{ padding: '16px' }}>
+                  <a 
+                    href="https://www.instagram.com/_shift_xd_/" 
+                    style={{
+                      background: 'hsl(var(--card))',
+                      lineHeight: 0,
+                      padding: 0,
+                      textAlign: 'center',
+                      textDecoration: 'none',
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '1rem'
+                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-primary/30 mx-auto mt-4">
+                      <img
+                        src="https://avatars.githubusercontent.com/u/206735051?v=4"
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <p className="text-foreground font-bold text-lg">@_shift_xd_</p>
+                    <p className="text-muted-foreground text-sm">View Instagram Profile</p>
+                    <div className="px-6 py-2 bg-primary text-primary-foreground rounded-full font-semibold mt-2">
+                      Open Instagram
+                    </div>
+                  </a>
                 </div>
-                <div className="flex-1">
-                  <p className="text-white font-semibold text-sm">_shift_xd_</p>
-                  <p className="text-gray-400 text-xs">Hardrik Thomas Shaji</p>
-                </div>
-                <a
-                  href="https://www.instagram.com/_shift_xd_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold rounded-lg transition-colors"
-                >
-                  Follow
-                </a>
-              </div>
+              </blockquote>
             </div>
 
-            {/* Grid of posts placeholder with actual Instagram aesthetic */}
-            <div className="grid grid-cols-3 gap-0.5 bg-black/50">
-              {[
-                "🎮", "💻", "🎨", 
-                "⚡", "🎯", "✨"
-              ].map((emoji, index) => (
-                <a
-                  key={index}
-                  href="https://www.instagram.com/_shift_xd_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-3xl hover:opacity-75 transition-opacity relative group"
-                >
-                  <span>{emoji}</span>
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <ExternalLink size={20} className="text-white" />
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            {/* View more link */}
+            {/* Direct link to Instagram profile */}
             <a
               href="https://www.instagram.com/_shift_xd_/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block p-4 text-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors border-t border-white/10"
+              className="block p-4 text-center text-primary hover:text-primary/80 text-sm font-semibold transition-colors border-t-2 border-primary/10 bg-muted/30"
             >
-              View all posts on Instagram →
+              <span className="inline-flex items-center gap-2">
+                View full profile on Instagram 
+                <ExternalLink size={14} />
+              </span>
             </a>
           </div>
         </motion.div>
 
-        {/* Follow Button */}
+        {/* Fun Follow Button */}
         <motion.div
           className="text-center mt-8 md:mt-12"
           initial={{ opacity: 0, y: 20 }}
@@ -208,13 +259,13 @@ export function InstagramSection() {
             href="https://www.instagram.com/_shift_xd_/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-semibold rounded-full"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(236, 72, 153, 0.4)" }}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold rounded-full text-lg squish shadow-lg"
+            whileHover={{ scale: 1.08, boxShadow: "0 0 40px rgba(236, 72, 153, 0.5)" }}
             whileTap={{ scale: 0.95 }}
           >
-            <Instagram size={18} />
-            Follow on Instagram
-            <ExternalLink size={14} />
+            <Instagram size={22} />
+            Follow me! 💖
+            <ExternalLink size={16} />
           </motion.a>
         </motion.div>
       </div>
