@@ -14,10 +14,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["'Cinzel'", "'Playfair Display'", "serif"],
-        body: ["'Outfit'", "sans-serif"],
-        display: ["'Cormorant Garamond'", "'Playfair Display'", "serif"],
-        sans: ["'Space Grotesk'", "sans-serif"],
+        heading: ["'Fredoka'", "'Nunito'", "sans-serif"],
+        body: ["'Nunito'", "'Outfit'", "sans-serif"],
+        display: ["'Pacifico'", "cursive"],
+        sans: ["'Outfit'", "'Space Grotesk'", "sans-serif"],
+        cursive: ["'Pacifico'", "cursive"],
+        playful: ["'Fredoka'", "'Nunito'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -68,6 +70,11 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "2rem",
+        "2xl": "2.5rem",
+        "3xl": "3rem",
+        curvy: "2rem",
+        blob: "60% 40% 30% 70% / 60% 30% 70% 40%",
       },
       keyframes: {
         "accordion-down": {

@@ -2,96 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&family=Pacifico&display=swap');
 
-/* Hardrik Portfolio Design System - Dark Hollow Knight Aesthetic with Cinematic Fonts */
+/* Hardrik Portfolio Design System - Vibrant Fun Aesthetic with Curvy Playful Design */
 
 @layer base {
   :root {
-    /* Hollow Knight Dark Palette - Deep void blues */
-    --background: 230 35% 5%;
-    --foreground: 45 15% 90%;
+    /* Vibrant Fun Palette - Warm cream background with playful accents */
+    --background: 30 40% 96%;
+    --foreground: 280 60% 25%;
     
-    /* Card with glassmorphism */
-    --card: 225 30% 8%;
-    --card-foreground: 45 15% 90%;
+    /* Card with soft shadows */
+    --card: 30 30% 98%;
+    --card-foreground: 280 60% 25%;
     
-    --popover: 225 30% 8%;
-    --popover-foreground: 45 15% 90%;
+    --popover: 30 30% 98%;
+    --popover-foreground: 280 60% 25%;
     
-    /* Hollow Knight Gold/Amber accent - primary */
-    --primary: 40 65% 55%;
-    --primary-foreground: 230 35% 5%;
+    /* Vibrant Pink/Magenta - primary */
+    --primary: 330 85% 60%;
+    --primary-foreground: 0 0% 100%;
     
-    /* Deep Hallownest blue - secondary */
-    --secondary: 210 40% 25%;
-    --secondary-foreground: 45 15% 90%;
+    /* Soft Lavender - secondary */
+    --secondary: 270 60% 70%;
+    --secondary-foreground: 280 60% 20%;
     
-    /* Muted void tones */
-    --muted: 225 25% 12%;
-    --muted-foreground: 215 15% 50%;
+    /* Muted cream tones */
+    --muted: 30 20% 90%;
+    --muted-foreground: 280 30% 45%;
     
-    /* Soul/Lifeblood blue glow */
-    --accent: 200 70% 50%;
-    --accent-foreground: 45 15% 90%;
+    /* Vibrant Teal/Cyan accent */
+    --accent: 175 80% 45%;
+    --accent-foreground: 0 0% 100%;
     
-    /* Infection red */
-    --destructive: 15 70% 45%;
-    --destructive-foreground: 45 15% 90%;
+    /* Coral/Orange for highlights */
+    --destructive: 15 90% 60%;
+    --destructive-foreground: 0 0% 100%;
     
-    --border: 225 25% 16%;
-    --input: 225 25% 10%;
-    --ring: 40 65% 55%;
+    --border: 330 40% 85%;
+    --input: 30 20% 92%;
+    --ring: 330 85% 60%;
     
-    --radius: 0.75rem;
+    --radius: 1.5rem;
     
-    /* Custom Hollow Knight gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(40, 65%, 55%) 0%, hsl(35, 75%, 42%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(230, 35%, 5%) 0%, hsl(225, 40%, 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsla(225, 30%, 12%, 0.85) 0%, hsla(230, 35%, 6%, 0.95) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsla(40, 65%, 55%, 0.12) 0%, transparent 70%);
-    --gradient-soul: linear-gradient(135deg, hsla(200, 70%, 50%, 0.3) 0%, hsla(210, 60%, 40%, 0.1) 100%);
+    /* Custom vibrant gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(330, 85%, 60%) 0%, hsl(280, 70%, 55%) 100%);
+    --gradient-fun: linear-gradient(135deg, hsl(330, 85%, 65%) 0%, hsl(30, 90%, 65%) 50%, hsl(50, 95%, 60%) 100%);
+    --gradient-card: linear-gradient(145deg, hsla(30, 30%, 98%, 0.95) 0%, hsla(30, 40%, 96%, 0.98) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsla(330, 85%, 60%, 0.15) 0%, transparent 70%);
+    --gradient-playful: linear-gradient(135deg, hsla(175, 80%, 45%, 0.3) 0%, hsla(330, 85%, 60%, 0.2) 100%);
     
-    /* Shadows with soul glow */
-    --shadow-gold: 0 0 50px hsla(40, 65%, 55%, 0.25);
-    --shadow-soul: 0 0 40px hsla(200, 70%, 50%, 0.2);
-    --shadow-card: 0 8px 40px hsla(230, 50%, 5%, 0.5);
-    --shadow-elevated: 0 25px 70px hsla(230, 50%, 3%, 0.6);
+    /* Fun shadows with color */
+    --shadow-primary: 0 8px 30px hsla(330, 85%, 60%, 0.3);
+    --shadow-accent: 0 8px 25px hsla(175, 80%, 45%, 0.25);
+    --shadow-card: 0 4px 20px hsla(280, 40%, 30%, 0.08);
+    --shadow-elevated: 0 20px 50px hsla(280, 40%, 20%, 0.12);
     
-    /* Glass effect - more ethereal */
-    --glass-bg: hsla(225, 30%, 8%, 0.7);
-    --glass-border: hsla(40, 65%, 55%, 0.12);
+    /* Glass effect - light and airy */
+    --glass-bg: hsla(30, 30%, 98%, 0.85);
+    --glass-border: hsla(330, 85%, 60%, 0.2);
     
-    --sidebar-background: 225 30% 6%;
-    --sidebar-foreground: 45 15% 90%;
-    --sidebar-primary: 40 65% 55%;
-    --sidebar-primary-foreground: 230 35% 5%;
-    --sidebar-accent: 225 25% 12%;
-    --sidebar-accent-foreground: 45 15% 90%;
-    --sidebar-border: 225 25% 16%;
-    --sidebar-ring: 40 65% 55%;
+    --sidebar-background: 30 30% 97%;
+    --sidebar-foreground: 280 60% 25%;
+    --sidebar-primary: 330 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 20% 92%;
+    --sidebar-accent-foreground: 280 60% 25%;
+    --sidebar-border: 330 40% 88%;
+    --sidebar-ring: 330 85% 60%;
   }
 
   .dark {
-    --background: 230 35% 5%;
-    --foreground: 45 15% 90%;
-    --card: 225 30% 8%;
-    --card-foreground: 45 15% 90%;
-    --popover: 225 30% 8%;
-    --popover-foreground: 45 15% 90%;
-    --primary: 40 65% 55%;
-    --primary-foreground: 230 35% 5%;
-    --secondary: 210 40% 25%;
-    --secondary-foreground: 45 15% 90%;
-    --muted: 225 25% 12%;
-    --muted-foreground: 215 15% 50%;
-    --accent: 200 70% 50%;
-    --accent-foreground: 45 15% 90%;
-    --destructive: 15 70% 45%;
-    --destructive-foreground: 45 15% 90%;
-    --border: 225 25% 16%;
-    --input: 225 25% 10%;
-    --ring: 40 65% 55%;
+    /* Dark mode with vibrant accents */
+    --background: 280 40% 8%;
+    --foreground: 30 30% 95%;
+    --card: 280 35% 12%;
+    --card-foreground: 30 30% 95%;
+    --popover: 280 35% 12%;
+    --popover-foreground: 30 30% 95%;
+    --primary: 330 90% 65%;
+    --primary-foreground: 280 40% 8%;
+    --secondary: 270 50% 55%;
+    --secondary-foreground: 30 30% 95%;
+    --muted: 280 30% 18%;
+    --muted-foreground: 30 20% 60%;
+    --accent: 175 75% 50%;
+    --accent-foreground: 280 40% 8%;
+    --destructive: 15 85% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 280 30% 22%;
+    --input: 280 30% 15%;
+    --ring: 330 90% 65%;
+    
+    --glass-bg: hsla(280, 35%, 12%, 0.85);
+    --glass-border: hsla(330, 85%, 60%, 0.25);
   }
 }
 
@@ -129,28 +133,29 @@
 }
 
 @layer components {
-  /* Glass card effect */
+  /* Glass card effect - softer and curvier */
   .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 2px solid var(--glass-border);
     box-shadow: var(--shadow-card);
+    border-radius: 2rem;
   }
 
-  /* Gold text gradient */
+  /* Playful text gradient */
   .text-gradient-gold {
-    background: var(--gradient-gold);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Glow effect */
+  /* Fun glow effect */
   .glow-gold {
-    box-shadow: var(--shadow-gold);
+    box-shadow: var(--shadow-primary);
   }
 
-  /* Animated underline */
+  /* Curvy animated underline */
   .animated-underline {
     position: relative;
   }
@@ -158,35 +163,37 @@
   .animated-underline::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -4px;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--gradient-gold);
-    transition: width 0.3s ease;
+    height: 4px;
+    background: var(--gradient-primary);
+    transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 2px;
   }
 
   .animated-underline:hover::after {
     width: 100%;
   }
 
-  /* Section divider */
+  /* Section divider - wavy */
   .section-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.4), transparent);
+    border-radius: 1px;
   }
 
-  /* Floating animation */
+  /* Bouncy floating animation */
   .float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
   }
 
-  /* Shimmer effect */
+  /* Shimmer effect - more vibrant */
   .shimmer {
     position: relative;
     overflow: hidden;
@@ -199,39 +206,41 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsla(43, 56%, 57%, 0.1), transparent);
-    animation: shimmer 3s infinite;
+    background: linear-gradient(90deg, transparent, hsla(330, 85%, 60%, 0.15), transparent);
+    animation: shimmer 2.5s infinite;
   }
 
   @keyframes shimmer {
     100% { left: 100%; }
   }
 
-  /* Pulse glow */
+  /* Pulse glow - fun colors */
   .pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
   }
 
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 20px hsla(43, 56%, 57%, 0.2); }
-    50% { box-shadow: 0 0 40px hsla(43, 56%, 57%, 0.4); }
+    0%, 100% { box-shadow: 0 0 20px hsla(330, 85%, 60%, 0.3); }
+    50% { box-shadow: 0 0 40px hsla(330, 85%, 60%, 0.5), 0 0 60px hsla(175, 80%, 45%, 0.2); }
   }
 
-  /* Custom border styles */
+  /* Custom curvy border styles */
   .custom-border {
-    border: 1px solid;
-    border-image: linear-gradient(135deg, hsla(40, 65%, 55%, 0.4), hsla(200, 70%, 50%, 0.2)) 1;
+    border: 3px solid;
+    border-image: linear-gradient(135deg, hsla(330, 85%, 60%, 0.5), hsla(175, 80%, 45%, 0.3)) 1;
+    border-radius: 2rem;
   }
 
   .custom-border-glow {
     position: relative;
+    border-radius: 2rem;
   }
 
   .custom-border-glow::before {
     content: '';
     position: absolute;
-    inset: -2px;
-    background: linear-gradient(135deg, hsla(40, 65%, 55%, 0.3), hsla(200, 70%, 50%, 0.2), hsla(40, 65%, 55%, 0.3));
+    inset: -3px;
+    background: linear-gradient(135deg, hsla(330, 85%, 60%, 0.4), hsla(175, 80%, 45%, 0.3), hsla(270, 60%, 60%, 0.3));
     border-radius: inherit;
     z-index: -1;
     opacity: 0;
@@ -242,39 +251,54 @@
     opacity: 1;
   }
   
-  /* Cinematic text styling */
+  /* Playful curvy font styling */
   .font-cinematic {
-    font-family: 'Cinzel', 'Playfair Display', serif;
-    letter-spacing: 0.05em;
+    font-family: 'Fredoka', 'Nunito', sans-serif;
+    letter-spacing: 0.02em;
   }
 
   .font-elegant {
-    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'Pacifico', cursive;
+    font-style: normal;
   }
 
-  /* Gradient border animation */
+  /* Fun curvy button */
+  .btn-curvy {
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: var(--shadow-primary);
+  }
+
+  .btn-curvy:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px hsla(330, 85%, 60%, 0.4);
+  }
+
+  /* Gradient border animation - playful */
   .gradient-border-animated {
     position: relative;
     background: hsl(var(--card));
-    border-radius: var(--radius);
+    border-radius: 2rem;
   }
 
   .gradient-border-animated::before {
     content: '';
     position: absolute;
-    inset: -2px;
-    border-radius: calc(var(--radius) + 2px);
+    inset: -3px;
+    border-radius: calc(2rem + 3px);
     background: linear-gradient(45deg, 
-      hsla(40, 65%, 55%, 0.5), 
-      hsla(200, 70%, 50%, 0.3), 
-      hsla(280, 60%, 50%, 0.3),
-      hsla(40, 65%, 55%, 0.5)
+      hsla(330, 85%, 60%, 0.6), 
+      hsla(175, 80%, 45%, 0.4), 
+      hsla(270, 60%, 60%, 0.4),
+      hsla(30, 90%, 60%, 0.4),
+      hsla(330, 85%, 60%, 0.6)
     );
-    background-size: 300% 300%;
-    animation: gradient-shift 8s ease infinite;
+    background-size: 400% 400%;
+    animation: gradient-shift 6s ease infinite;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   @keyframes gradient-shift {
@@ -283,22 +307,23 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Instagram gradient border */
+  /* Instagram gradient border - curvy */
   .instagram-gradient-border {
     position: relative;
+    border-radius: 2rem;
   }
 
   .instagram-gradient-border::before {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -4px;
     border-radius: inherit;
     background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045, #833ab4);
     background-size: 300% 300%;
-    animation: instagram-gradient 6s ease infinite;
+    animation: instagram-gradient 5s ease infinite;
     z-index: -1;
-    filter: blur(8px);
-    opacity: 0.6;
+    filter: blur(10px);
+    opacity: 0.7;
   }
 
   @keyframes instagram-gradient {
@@ -307,14 +332,68 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Card hover lift effect */
+  /* Card hover lift effect - bouncier */
   .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    border-radius: 2rem;
   }
 
   .hover-lift:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) rotate(1deg);
     box-shadow: var(--shadow-elevated);
+  }
+
+  /* Curvy blob shape */
+  .blob {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob-morph 8s ease-in-out infinite;
+  }
+
+  @keyframes blob-morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+    75% { border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%; }
+  }
+
+  /* Wiggle animation */
+  .wiggle {
+    animation: wiggle 2s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  /* Squish button effect */
+  .squish {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .squish:active {
+    transform: scale(0.95) rotate(-1deg);
+  }
+
+  /* Rainbow text */
+  .text-rainbow {
+    background: linear-gradient(135deg, 
+      hsl(330, 85%, 60%), 
+      hsl(270, 60%, 60%), 
+      hsl(175, 80%, 45%),
+      hsl(30, 90%, 60%)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: rainbow-shift 4s ease infinite;
+  }
+
+  @keyframes rainbow-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
 
@@ -323,11 +402,20 @@
     text-wrap: balance;
   }
 
-  /* Cinematic gradient text */
+  /* Vibrant gradient text */
   .text-gradient-cinematic {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(40, 75%, 65%), hsl(var(--primary)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(270, 60%, 60%), hsl(var(--accent)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Super rounded corners */
+  .rounded-curvy {
+    border-radius: 2rem;
+  }
+
+  .rounded-blob {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 }
