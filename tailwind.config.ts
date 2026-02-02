@@ -14,12 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["'Fredoka'", "'Nunito'", "sans-serif"],
-        body: ["'Nunito'", "'Outfit'", "sans-serif"],
-        display: ["'Pacifico'", "cursive"],
-        sans: ["'Outfit'", "'Space Grotesk'", "sans-serif"],
-        cursive: ["'Pacifico'", "cursive"],
-        playful: ["'Fredoka'", "'Nunito'", "sans-serif"],
+        heading: ["'Space Grotesk'", "'Outfit'", "system-ui", "sans-serif"],
+        body: ["'Outfit'", "'Space Grotesk'", "system-ui", "sans-serif"],
+        display: ["'Space Grotesk'", "system-ui", "sans-serif"],
+        sans: ["'Outfit'", "'Space Grotesk'", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -65,16 +64,22 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Hack Club palette
+        red: "hsl(var(--hc-red))",
+        orange: "hsl(var(--hc-orange))",
+        yellow: "hsl(var(--hc-yellow))",
+        green: "hsl(var(--hc-green))",
+        cyan: "hsl(var(--hc-cyan))",
+        blue: "hsl(var(--hc-blue))",
+        purple: "hsl(var(--hc-purple))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        xl: "2rem",
-        "2xl": "2.5rem",
-        "3xl": "3rem",
-        curvy: "2rem",
-        blob: "60% 40% 30% 70% / 60% 30% 70% 40%",
+        xl: "1rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
       },
       keyframes: {
         "accordion-down": {
