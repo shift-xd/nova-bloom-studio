@@ -4,10 +4,10 @@ import { useRef } from "react";
 import BlurText from "@/components/ui/BlurText";
 
 const stats = [
-  { label: "Age", value: "18" },
-  { label: "Projects Completed", value: "24+" },
-  { label: "Coding Experience", value: "4 Years" },
-  { label: "3D Modeling", value: "2 Years" },
+  { label: "Age", value: "18", suffix: "" },
+  { label: "Projects Completed", value: "24", suffix: "+" },
+  { label: "Coding Experience", value: "4", suffix: " Years" },
+  { label: "3D Modeling", value: "2", suffix: " Years" },
 ];
 
 export function AboutSection() {
@@ -30,19 +30,19 @@ export function AboutSection() {
             delay={80}
             animateBy="characters"
           />
-          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
+          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto" />
         </motion.div>
 
         {/* Content Grid - Centered */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12 max-w-5xl mx-auto">
           {/* About Text */}
           <motion.div
-            className="flex-1 glass-card rounded-2xl p-6 md:p-8 border border-primary/10"
+            className="flex-1 glass-card rounded-2xl p-6 md:p-8 border border-white/5 shimmer"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6, type: "spring", damping: 25 }}
           >
-            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base text-center lg:text-left">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base text-center lg:text-left font-body">
               <p>
                 Hello! I'm Hardrik, an 18-year-old developer and designer with a passion 
                 for creating innovative digital experiences. My journey in technology 
@@ -68,21 +68,30 @@ export function AboutSection() {
             className="w-full lg:w-auto grid grid-cols-2 gap-3 md:gap-4"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.6, type: "spring", damping: 25 }}
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="glass-card rounded-xl p-4 md:p-6 border border-primary/10 text-center"
+                className="glass-card rounded-xl p-4 md:p-6 border border-white/5 text-center relative overflow-hidden group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.4 }}
-                whileHover={{ scale: 1.02, borderColor: "hsla(40, 65%, 55%, 0.3)" }}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: "spring" }}
+                whileHover={{ 
+                  scale: 1.02, 
+                  borderColor: "hsla(355, 75%, 55%, 0.3)",
+                }}
               >
-                <p className="text-2xl md:text-3xl font-heading font-bold text-primary mb-1">
+                {/* Glow effect on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+                
+                <p className="text-2xl md:text-3xl font-heading font-bold text-primary mb-1 relative z-10">
                   {stat.value}
+                  <span className="text-lg md:text-xl">{stat.suffix}</span>
                 </p>
-                <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
+                <p className="text-xs md:text-sm text-muted-foreground relative z-10">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
