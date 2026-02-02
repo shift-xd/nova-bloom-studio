@@ -11,18 +11,21 @@ const contactMethods = [
     label: "Email",
     value: "lastsurvivor857@gmail.com",
     href: "mailto:lastsurvivor857@gmail.com",
+    gradient: "from-rose-500/20 to-pink-500/20",
   },
   {
     icon: Instagram,
     label: "Instagram",
     value: "@_shift_xd_",
     href: "https://www.instagram.com/_shift_xd_/",
+    gradient: "from-purple-500/20 to-pink-500/20",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "shift-xd",
     href: "https://github.com/shift-xd",
+    gradient: "from-slate-500/20 to-zinc-500/20",
   },
 ];
 
@@ -68,7 +71,7 @@ export function ContactSection() {
             delay={80}
             animateBy="characters"
           />
-          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
+          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto" />
         </motion.div>
 
         {/* Contact Grid - Centered */}
@@ -78,7 +81,7 @@ export function ContactSection() {
             className="flex-1 space-y-4"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6, type: "spring", damping: 25 }}
           >
             {contactMethods.map((method, index) => (
               <motion.a
@@ -86,17 +89,20 @@ export function ContactSection() {
                 href={method.href}
                 target={method.label !== "Email" ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 glass-card rounded-xl p-4 border border-primary/10 hover:border-primary/30 transition-all group"
+                className={`flex items-center gap-4 glass-card rounded-xl p-4 border border-white/5 hover:border-white/10 transition-all duration-300 group bg-gradient-to-br ${method.gradient}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                whileHover={{ x: 5 }}
+                transition={{ delay: 0.3 + index * 0.1, duration: 0.4, type: "spring" }}
+                whileHover={{ x: 8, scale: 1.02 }}
               >
-                <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <motion.div 
+                  className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300"
+                  whileHover={{ rotate: 10 }}
+                >
                   <method.icon className="w-5 h-5 text-primary" />
-                </div>
+                </motion.div>
                 <div>
-                  <h4 className="font-heading font-semibold text-primary text-sm md:text-base">
+                  <h4 className="font-heading font-semibold text-foreground text-sm md:text-base">
                     {method.label}
                   </h4>
                   <p className="text-muted-foreground text-xs md:text-sm">{method.value}</p>
@@ -108,10 +114,10 @@ export function ContactSection() {
           {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            className="flex-1 glass-card rounded-2xl p-5 md:p-6 border border-primary/10"
+            className="flex-1 glass-card rounded-2xl p-5 md:p-6 border border-white/5"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.6, type: "spring", damping: 25 }}
           >
             <div className="space-y-4">
               <input
@@ -119,7 +125,7 @@ export function ContactSection() {
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
+                className="w-full px-4 py-3 bg-white/5 border border-white/5 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/30 focus:bg-white/10 transition-all duration-300 text-sm"
                 required
               />
               <input
@@ -127,7 +133,7 @@ export function ContactSection() {
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
+                className="w-full px-4 py-3 bg-white/5 border border-white/5 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/30 focus:bg-white/10 transition-all duration-300 text-sm"
                 required
               />
               <input
@@ -135,7 +141,7 @@ export function ContactSection() {
                 placeholder="Subject"
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
+                className="w-full px-4 py-3 bg-white/5 border border-white/5 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/30 focus:bg-white/10 transition-all duration-300 text-sm"
                 required
               />
               <textarea
@@ -143,13 +149,13 @@ export function ContactSection() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none text-sm"
+                className="w-full px-4 py-3 bg-white/5 border border-white/5 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/30 focus:bg-white/10 transition-all duration-300 resize-none text-sm"
                 required
               />
               <motion.button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors text-sm md:text-base"
-                whileHover={{ scale: 1.02 }}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-300 text-sm md:text-base btn-premium"
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Send size={16} />

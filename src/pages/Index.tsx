@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/portfolio/HeroSection";
 import { AboutSection } from "@/components/portfolio/AboutSection";
 import { InterestsSection } from "@/components/portfolio/InterestsSection";
 import { BouncingProjectCards } from "@/components/portfolio/BouncingProjectCards";
-import { InstagramSection } from "@/components/portfolio/InstagramSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { Footer } from "@/components/portfolio/Footer";
 import { SectionDivider } from "@/components/portfolio/SectionDivider";
@@ -33,10 +32,6 @@ const Index = () => {
         <SectionDivider />
         <div className="w-full">
           <BouncingProjectCards />
-        </div>
-        <SectionDivider />
-        <div className="w-full">
-          <InstagramSection />
         </div>
         <SectionDivider />
         <div className="w-full">
