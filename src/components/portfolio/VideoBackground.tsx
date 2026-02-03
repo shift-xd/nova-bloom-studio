@@ -2,83 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX, RotateCcw } from "lucide-react";
 
-// Jelly Triangle Loader Component
-function JellyTriangleLoader() {
-  return (
-    <div className="flex flex-col items-center gap-6">
-      {/* Jelly Triangle Container */}
-      <div 
-        className="relative w-[60px] h-[60px]"
-        style={{ 
-          filter: 'url(#uib-jelly-triangle-ooze)',
-        }}
-      >
-        {/* Dot */}
-        <div 
-          className="absolute w-[33%] h-[33%] bg-primary rounded-full"
-          style={{
-            top: '6%',
-            left: '30%',
-            animation: 'jelly-grow 1.75s ease infinite',
-          }}
-        />
-        {/* Before pseudo (bottom right) */}
-        <div 
-          className="absolute w-[33%] h-[33%] bg-primary rounded-full"
-          style={{
-            bottom: '6%',
-            right: '0',
-            animation: 'jelly-grow 1.75s ease -1.167s infinite',
-          }}
-        />
-        {/* After pseudo (bottom left) */}
-        <div 
-          className="absolute w-[33%] h-[33%] bg-primary rounded-full"
-          style={{
-            bottom: '6%',
-            left: '0',
-            animation: 'jelly-grow 1.75s ease -0.583s infinite',
-          }}
-        />
-        {/* Traveler */}
-        <div 
-          className="absolute w-[33%] h-[33%] bg-primary rounded-full"
-          style={{
-            top: '6%',
-            left: '30%',
-            animation: 'jelly-triangulate 1.75s ease infinite',
-          }}
-        />
-      </div>
-      
-      {/* Loading Text */}
-      <motion.p
-        className="text-primary/80 text-sm font-medium tracking-widest"
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        LOADING
-      </motion.p>
-      
-      {/* SVG Filter - Hidden */}
-      <svg width="0" height="0" className="absolute">
-        <defs>
-          <filter id="uib-jelly-triangle-ooze">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
-              result="ooze"
-            />
-            <feBlend in="SourceGraphic" in2="ooze" />
-          </filter>
-        </defs>
-      </svg>
-    </div>
-  );
-}
-
 export function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -124,23 +47,66 @@ export function VideoBackground() {
 
   return (
     <>
-      {/* Loading Screen with Jelly Triangle */}
+      {/* Glass Blur Loading Screen */}
       <AnimatePresence>
         {isLoading && (
           <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="fixed inset-0 bg-background z-[9999] flex items-center justify-center"
+            initial={{ opacity: 1, backdropFilter: "blur(40px) saturate(180%)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px) saturate(100%)" }}
+            transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed inset-0 z-[9999]"
+            style={{
+              background: "linear-gradient(135deg, hsla(40, 50%, 12%, 0.95) 0%, hsla(200, 30%, 8%, 0.98) 50%, hsla(40, 40%, 10%, 0.95) 100%)",
+            }}
           >
-            {/* Background glow */}
-            <div 
-              className="absolute inset-0"
+            {/* Ambient glow orbs */}
+            <motion.div
+              className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full"
               style={{
-                background: "radial-gradient(circle at center, hsla(40, 65%, 55%, 0.08) 0%, transparent 60%)",
+                background: "radial-gradient(circle, hsla(40, 65%, 55%, 0.15) 0%, transparent 70%)",
+                filter: "blur(40px)",
               }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
-            <JellyTriangleLoader />
+            <motion.div
+              className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full"
+              style={{
+                background: "radial-gradient(circle, hsla(200, 60%, 50%, 0.12) 0%, transparent 70%)",
+                filter: "blur(30px)",
+              }}
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.2, 0.4, 0.2],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            />
+            
+            {/* Glass morphism center panel */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ scale: 1.1 }}
+              exit={{ scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <motion.div
+                className="w-32 h-32 rounded-3xl"
+                style={{
+                  background: "linear-gradient(135deg, hsla(40, 50%, 50%, 0.08) 0%, hsla(200, 40%, 40%, 0.05) 100%)",
+                  backdropFilter: "blur(20px)",
+                  border: "1px solid hsla(40, 50%, 50%, 0.1)",
+                  boxShadow: "0 8px 32px hsla(0, 0%, 0%, 0.3), inset 0 1px 0 hsla(255, 255%, 255%, 0.05)",
+                }}
+                animate={{
+                  rotate: [0, 90, 180, 270, 360],
+                  borderRadius: ["24%", "40%", "24%", "40%", "24%"],
+                }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -64,14 +64,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Hack Club palette
-        red: "hsl(var(--hc-red))",
-        orange: "hsl(var(--hc-orange))",
-        yellow: "hsl(var(--hc-yellow))",
-        green: "hsl(var(--hc-green))",
-        cyan: "hsl(var(--hc-cyan))",
-        blue: "hsl(var(--hc-blue))",
-        purple: "hsl(var(--hc-purple))",
+        // Hollow Knight palette
+        gold: "hsl(var(--color-gold))",
+        amber: "hsl(var(--color-amber))",
+        soul: "hsl(var(--color-soul))",
+        void: "hsl(var(--color-void))",
+        pale: "hsl(var(--color-pale))",
+        lifeblood: "hsl(var(--color-lifeblood))",
+        charm: "hsl(var(--color-charm))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -107,8 +107,13 @@ export default {
           "100%": { opacity: "1", transform: "scale(1)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsla(43, 56%, 57%, 0.2)" },
-          "50%": { boxShadow: "0 0 40px hsla(43, 56%, 57%, 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsla(40, 65%, 55%, 0.2)" },
+          "50%": { boxShadow: "0 0 40px hsla(40, 65%, 55%, 0.4)" },
+        },
+        "float-smooth": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "25%": { transform: "translateY(-8px) rotate(1deg)" },
+          "75%": { transform: "translateY(4px) rotate(-1deg)" },
         },
       },
       animation: {
@@ -119,6 +124,7 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "float-smooth": "float-smooth 6s ease-in-out infinite",
       },
     },
   },
