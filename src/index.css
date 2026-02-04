@@ -289,6 +289,35 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-name: stackLoop;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+  }
+
+  .floating-character {
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.35));
+    pointer-events: none;
+  }
+
+  .character-card {
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .character-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .character-illustration img {
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stacked-card {
+      animation: none;
+      position: static;
+      transform: none;
+      margin: 0 auto 1.5rem;
+    }
   }
 
   /* Looping stack animation */
