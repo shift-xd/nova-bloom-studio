@@ -37,7 +37,7 @@ export function AboutSection() {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12 max-w-5xl mx-auto">
           {/* About Text */}
           <motion.div
-            className="flex-1 glass-card rounded-2xl p-6 md:p-8 border border-white/5 shimmer"
+            className="flex-1 glass-card rounded-2xl p-6 md:p-8 border border-white/10 shimmer"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6, type: "spring", damping: 25 }}
@@ -73,7 +73,7 @@ export function AboutSection() {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="glass-card rounded-xl p-4 md:p-6 border border-white/5 text-center relative overflow-hidden group"
+                className="glass-card rounded-xl p-4 md:p-6 border border-white/10 text-center relative overflow-hidden group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: "spring" }}
@@ -84,7 +84,7 @@ export function AboutSection() {
               >
                 {/* Glow effect on hover */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
                 
                 <p className="text-2xl md:text-3xl font-heading font-bold text-primary mb-1 relative z-10">

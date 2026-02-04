@@ -58,7 +58,7 @@ export function VideoBackground() {
             style={{
               backdropFilter: "blur(40px) saturate(180%)",
               WebkitBackdropFilter: "blur(40px) saturate(180%)",
-              background: "hsla(220, 15%, 7%, 0.85)",
+              background: "hsla(224, 50%, 6%, 0.85)",
             }}
           />
         )}
@@ -83,14 +83,14 @@ export function VideoBackground() {
       </div>
 
       {/* Video Overlay */}
-      <div className="fixed inset-0 -z-10 bg-background/70 backdrop-blur-[3px]" />
+      <div className="fixed inset-0 -z-10 bg-background/70 backdrop-blur-[4px]" />
 
       {/* Video Controls - Mobile optimized */}
       {!hasError && (
         <div className="fixed bottom-4 right-4 md:bottom-5 md:right-5 z-50 flex gap-2 md:gap-3">
           <motion.button
             onClick={toggleMute}
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-primary/40 flex items-center justify-center text-foreground hover:bg-primary/20 transition-colors"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-white/15 flex items-center justify-center text-foreground hover:bg-white/10 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
@@ -99,7 +99,7 @@ export function VideoBackground() {
           </motion.button>
           <motion.button
             onClick={replayVideo}
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-primary/40 flex items-center justify-center text-foreground hover:bg-primary/20 transition-colors"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-white/15 flex items-center justify-center text-foreground hover:bg-white/10 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Replay video"

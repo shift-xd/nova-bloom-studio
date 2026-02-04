@@ -77,7 +77,7 @@ export function InterestsSection() {
           {interests.map((interest, index) => (
             <motion.div
               key={interest.title}
-              className={`glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/5 text-center bg-gradient-to-br ${interest.gradient}`}
+              className={`glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-gradient-to-br ${interest.gradient}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5, type: "spring", damping: 25 }}
@@ -89,14 +89,14 @@ export function InterestsSection() {
             >
               {/* Accent bar */}
               <motion.div
-                className="absolute left-0 top-0 w-1 h-full bg-primary/50"
+                className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary/80 to-accent/60"
                 initial={{ scaleY: 0 }}
                 whileHover={{ scaleY: 1 }}
                 transition={{ duration: 0.4 }}
               />
 
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <motion.div
                 className={`inline-flex p-3 rounded-xl bg-white/5 mb-4 ${interest.iconColor}`}
