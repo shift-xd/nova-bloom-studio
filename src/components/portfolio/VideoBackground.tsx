@@ -82,19 +82,8 @@ export function VideoBackground() {
         </video>
       </div>
 
-      {/* Video Overlay */}
-      <div className="fixed inset-0 -z-10 bg-background/70 backdrop-blur-[4px]" />
-
-      {/* Subtle gold ambient glow */}
-      <motion.div
-        className="fixed inset-0 -z-10 opacity-40"
-        style={{
-          background:
-            "radial-gradient(ellipse at top, hsla(40, 65%, 55%, 0.12), transparent 50%), radial-gradient(ellipse at bottom, hsla(200, 60%, 50%, 0.08), transparent 50%)",
-        }}
-        animate={{ opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Simple blur overlay - no colors */}
+      <div className="fixed inset-0 -z-10 bg-black/50 backdrop-blur-[2px]" />
 
       {/* Video Controls - Mobile optimized */}
       {!hasError && (
