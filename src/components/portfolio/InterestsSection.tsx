@@ -71,7 +71,11 @@ export function InterestsSection() {
           {interests.map((interest, index) => (
             <motion.div
               key={interest.title}
+ codex/redesign-website-for-modern-look-j7cmqi
               className="glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-white/5"
+=======
+              className={`glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-gradient-to-br ${interest.gradient}`}
+ main
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5, type: "spring", damping: 25 }}

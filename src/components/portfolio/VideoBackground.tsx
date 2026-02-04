@@ -84,6 +84,7 @@ export function VideoBackground() {
 
       {/* Video Overlay */}
       <div className="fixed inset-0 -z-10 bg-background/70 backdrop-blur-[4px]" />
+codex/redesign-website-for-modern-look-j7cmqi
       <motion.div
         className="fixed inset-0 -z-10 opacity-70"
         style={{
@@ -93,6 +94,8 @@ export function VideoBackground() {
         animate={{ opacity: [0.45, 0.7, 0.45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
+=======
+ main
 
       {/* Video Controls - Mobile optimized */}
       {!hasError && (
