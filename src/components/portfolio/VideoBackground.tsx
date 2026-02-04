@@ -51,7 +51,8 @@ export function VideoBackground() {
       <AnimatePresence>
         {isLoading && (
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
             className="fixed inset-0 z-[9999] pointer-events-none bg-black/50 backdrop-blur-[2px]"

@@ -119,7 +119,7 @@ export function AboutSection() {
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: "spring" }}
                 whileHover={{ 
                   scale: 1.02, 
-                  borderColor: "hsla(262, 90%, 64%, 0.35)",
+                  borderColor: "hsla(30, 100%, 53%, 0.35)",
                 }}
               >
                 {/* Glow effect on hover */}

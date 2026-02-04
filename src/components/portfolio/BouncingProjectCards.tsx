@@ -53,6 +53,12 @@ export function BouncingProjectCards() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <img
+            src="/characters/raccoon-analyst.svg"
+            alt="Raccoon analyst"
+            className="mx-auto mb-4 w-20 sm:w-24 opacity-70"
+            loading="lazy"
+          />
           <BlurText
             text="My Projects"
             className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center flex flex-wrap"
@@ -100,7 +106,7 @@ export function BouncingProjectCards() {
                     className="w-full h-full rounded-2xl overflow-hidden glass-card border border-white/10"
                     style={{
                       boxShadow: isHovered 
-                        ? "0 25px 50px rgba(0,0,0,0.5), 0 0 30px hsla(262, 90%, 64%, 0.2)" 
+                        ? "0 25px 50px rgba(0,0,0,0.5), 0 0 30px hsla(30, 100%, 53%, 0.22)" 
                         : "0 10px 30px rgba(0,0,0,0.4)",
                     }}
                   >
