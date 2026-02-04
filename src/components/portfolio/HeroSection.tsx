@@ -71,7 +71,7 @@ export function HeroSection() {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12">
           {/* Text Content */}
           <motion.div
-            className="flex-1 text-center lg:text-left max-w-xl"
+            className="flex-1 text-center lg:text-left max-w-xl order-2 lg:order-1"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
@@ -174,12 +174,25 @@ export function HeroSection() {
 
           {/* Profile Image */}
           <motion.div
-            className="flex-1 flex justify-center"
+            className="flex-1 flex justify-center order-1 lg:order-2"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8, type: "spring", damping: 25 }}
           >
-            <div className="relative">
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.div
+                className="absolute inset-0 rounded-full md:hidden"
+                style={{
+                  background: "radial-gradient(circle, hsla(196, 90%, 60%, 0.2) 0%, transparent 65%)",
+                  filter: "blur(30px)",
+                }}
+                animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
               {/* Outer glow ring */}
               <motion.div
                 className="absolute inset-0 rounded-full"
@@ -214,7 +227,7 @@ export function HeroSection() {
                   draggable={false}
                 />
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 

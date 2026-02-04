@@ -9,43 +9,37 @@ const interests = [
     icon: Code,
     title: "Coding",
     description: "Creating efficient and elegant solutions through programming with various languages and frameworks.",
-    gradient: "from-blue-500/10 to-cyan-500/10",
-    iconColor: "text-blue-400",
+    iconColor: "text-primary",
   },
   {
     icon: Box,
     title: "3D Modeling",
     description: "Designing three-dimensional digital models for visualization and 3D printing applications.",
-    gradient: "from-purple-500/10 to-pink-500/10",
-    iconColor: "text-purple-400",
+    iconColor: "text-primary",
   },
   {
     icon: Cpu,
     title: "PCB Designing",
     description: "Designing printed circuit boards that bring electronic projects to life with precision.",
-    gradient: "from-emerald-500/10 to-teal-500/10",
-    iconColor: "text-emerald-400",
+    iconColor: "text-primary",
   },
   {
     icon: Palette,
     title: "Creative Websites",
     description: "Building visually appealing and user-friendly websites with exceptional experiences.",
-    gradient: "from-orange-500/10 to-amber-500/10",
-    iconColor: "text-orange-400",
+    iconColor: "text-primary",
   },
   {
     icon: Settings,
     title: "Functional Design",
     description: "Creating designs that work effectively and efficiently for their intended purpose.",
-    gradient: "from-slate-500/10 to-zinc-500/10",
-    iconColor: "text-slate-400",
+    iconColor: "text-primary",
   },
   {
     icon: Lightbulb,
     title: "Ideology",
     description: "Exploring conceptual frameworks that drive innovation and creative problem-solving.",
-    gradient: "from-yellow-500/10 to-lime-500/10",
-    iconColor: "text-yellow-400",
+    iconColor: "text-primary",
   },
 ];
 
@@ -77,7 +71,11 @@ export function InterestsSection() {
           {interests.map((interest, index) => (
             <motion.div
               key={interest.title}
+ codex/redesign-website-for-modern-look-j7cmqi
+              className="glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-white/5"
+=======
               className={`glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-gradient-to-br ${interest.gradient}`}
+ main
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5, type: "spring", damping: 25 }}

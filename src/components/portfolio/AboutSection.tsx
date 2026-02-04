@@ -61,6 +61,17 @@ export function AboutSection() {
                 technologies to expand my skills.
               </p>
             </div>
+            <div className="mt-6 flex items-center justify-center lg:justify-start">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs md:text-sm text-foreground/80">
+                <img
+                  src="https://assets.hackclub.com/icon-rounded.svg"
+                  alt="Hack Club logo"
+                  className="h-6 w-6"
+                  loading="lazy"
+                />
+                Proud member of Hack Club
+              </div>
+            </div>
           </motion.div>
 
           {/* Stats Grid */}
@@ -79,7 +90,7 @@ export function AboutSection() {
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: "spring" }}
                 whileHover={{ 
                   scale: 1.02, 
-                  borderColor: "hsla(355, 75%, 55%, 0.3)",
+                  borderColor: "hsla(262, 90%, 64%, 0.35)",
                 }}
               >
                 {/* Glow effect on hover */}

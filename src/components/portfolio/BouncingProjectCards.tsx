@@ -155,9 +155,12 @@ export function BouncingProjectCards() {
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {projects.map((project, index) => (
-                  <div 
+                  <motion.div
                     key={project.title} 
                     className="flex-none w-[85%] min-w-0 pl-4 first:pl-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.2 + index * 0.1, duration: 0.4, type: "spring" }}
                   >
                     <motion.a
                       href={project.link}
@@ -184,7 +187,7 @@ export function BouncingProjectCards() {
                         </div>
                       </div>
                     </motion.a>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
