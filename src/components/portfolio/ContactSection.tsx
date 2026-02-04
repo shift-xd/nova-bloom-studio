@@ -12,27 +12,18 @@ const contactMethods = [
     label: "Email",
     value: "lastsurvivor857@gmail.com",
     href: "mailto:lastsurvivor857@gmail.com",
- codex/redesign-website-for-modern-look-j7cmqi
-    gradient: "from-primary/15 to-accent/10",
- main
   },
   {
     icon: Instagram,
     label: "Instagram",
     value: "@_shift_xd_",
     href: "https://www.instagram.com/_shift_xd_/",
- codex/redesign-website-for-modern-look-j7cmqi
-    gradient: "from-violet-500/15 to-cyan-500/10",
- main
   },
   {
     icon: Github,
     label: "GitHub",
     value: "shift-xd",
     href: "https://github.com/shift-xd",
- codex/redesign-website-for-modern-look-j7cmqi
-    gradient: "from-slate-500/20 to-white/5",
- main
   },
 ];
 
@@ -97,10 +88,7 @@ export function ContactSection() {
                 href={method.href}
                 target={method.label !== "Email" ? "_blank" : undefined}
                 rel="noopener noreferrer"
- codex/redesign-website-for-modern-look-j7cmqi
-                className="flex items-center gap-4 glass-card rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300 group bg-white/5"
-                className={`flex items-center gap-4 glass-card rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300 group bg-gradient-to-br ${method.gradient}`}
- main
+                className="flex items-center gap-4 glass-card rounded-xl p-4 border border-primary/20 hover:border-primary/40 transition-all duration-300 group bg-white/5"
                 initial={{ opacity: 0, x: -20 }}
                 animate={
                   isInView
