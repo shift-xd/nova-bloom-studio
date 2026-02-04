@@ -4,80 +4,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hardrik Portfolio Design System - Hack Club Inspired Dark Theme */
+/* Hardrik Portfolio Design System - Warm Vintage Palette */
 
 @layer base {
   :root {
-    /* Modern midnight theme with violet & cyan accents */
-    --background: 224 50% 6%;
-    --foreground: 210 40% 96%;
+    /* Dark charcoal background */
+    --background: 0 0% 15%;
+    --foreground: 71 35% 90%;
 
     /* Card */
-    --card: 224 32% 10%;
-    --card-foreground: 210 40% 96%;
+    --card: 0 0% 18%;
+    --card-foreground: 71 35% 90%;
 
-    --popover: 224 32% 10%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 18%;
+    --popover-foreground: 71 35% 90%;
 
-    /* Primary - Electric Violet */
-    --primary: 262 90% 64%;
-    --primary-foreground: 224 50% 6%;
+    /* Primary - Vibrant Orange */
+    --primary: 30 100% 53%;
+    --primary-foreground: 0 0% 10%;
 
-    /* Secondary - Arctic Cyan */
-    --secondary: 190 85% 55%;
-    --secondary-foreground: 224 50% 6%;
+    /* Secondary - Sage Green */
+    --secondary: 102 18% 70%;
+    --secondary-foreground: 0 0% 15%;
 
     /* Muted */
-    --muted: 224 20% 16%;
-    --muted-foreground: 215 18% 70%;
+    --muted: 0 0% 22%;
+    --muted-foreground: 71 20% 70%;
 
-    /* Accent */
-    --accent: 196 90% 60%;
-    --accent-foreground: 224 50% 6%;
+    /* Accent - Cream */
+    --accent: 71 35% 85%;
+    --accent-foreground: 0 0% 15%;
 
     /* Destructive */
     --destructive: 0 85% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 224 22% 18%;
-    --input: 224 22% 14%;
-    --ring: 262 90% 64%;
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 30 100% 53%;
 
     --radius: 1rem;
 
-    /* Modern palette */
-    --color-violet: 262 90% 64%;
-    --color-cyan: 190 85% 55%;
-    --color-ice: 196 90% 60%;
-    --color-ink: 224 50% 6%;
-    --color-slate: 224 32% 10%;
-    --color-glow: 262 90% 64%;
+    /* Warm vintage palette */
+    --color-orange: 30 100% 53%;
+    --color-sage: 102 18% 70%;
+    --color-cream: 71 35% 85%;
+    --color-dark: 0 0% 15%;
+    --color-charcoal: 0 0% 18%;
+    --color-glow: 30 100% 53%;
 
     /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(262, 90%, 64%) 0%, hsl(196, 90%, 60%) 100%);
-    --gradient-subtle: linear-gradient(135deg, hsl(224, 32%, 12%) 0%, hsl(224, 50%, 6%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsla(262, 90%, 64%, 0.15) 0%, transparent 70%);
-    --gradient-soul: linear-gradient(135deg, hsl(196, 90%, 60%) 0%, hsl(190, 85%, 55%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(30, 100%, 53%) 0%, hsl(102, 18%, 70%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(0, 0%, 18%) 0%, hsl(0, 0%, 15%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsla(30, 100%, 53%, 0.15) 0%, transparent 70%);
+    --gradient-warm: linear-gradient(135deg, hsl(30, 100%, 53%) 0%, hsl(71, 35%, 85%) 100%);
 
     /* Premium shadows */
-    --shadow-sm: 0 2px 12px hsla(224, 50%, 6%, 0.35);
-    --shadow-md: 0 14px 40px hsla(224, 50%, 6%, 0.45);
-    --shadow-lg: 0 28px 70px hsla(224, 50%, 6%, 0.55);
-    --shadow-glow: 0 0 45px hsla(262, 90%, 64%, 0.2);
-    --shadow-soul: 0 0 35px hsla(196, 90%, 60%, 0.18);
+    --shadow-sm: 0 2px 12px hsla(0, 0%, 0%, 0.35);
+    --shadow-md: 0 14px 40px hsla(0, 0%, 0%, 0.45);
+    --shadow-lg: 0 28px 70px hsla(0, 0%, 0%, 0.55);
+    --shadow-glow: 0 0 45px hsla(30, 100%, 53%, 0.2);
+    --shadow-warm: 0 0 35px hsla(102, 18%, 70%, 0.18);
 
     /* Glass effect */
-    --glass-bg: hsla(224, 32%, 10%, 0.7);
-    --glass-border: hsla(0, 0%, 100%, 0.08);
+    --glass-bg: hsla(0, 0%, 18%, 0.7);
+    --glass-border: hsla(71, 35%, 85%, 0.08);
 
-    --sidebar-background: 224 32% 8%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 262 90% 64%;
-    --sidebar-primary-foreground: 224 50% 6%;
-    --sidebar-accent: 224 22% 14%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 224 22% 18%;
-    --sidebar-ring: 262 90% 64%;
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 71 35% 90%;
+    --sidebar-primary: 30 100% 53%;
+    --sidebar-primary-foreground: 0 0% 15%;
+    --sidebar-accent: 0 0% 20%;
+    --sidebar-accent-foreground: 71 35% 90%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 30 100% 53%;
   }
 }
 
