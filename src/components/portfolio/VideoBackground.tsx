@@ -94,7 +94,6 @@ codex/redesign-website-for-modern-look-j7cmqi
         animate={{ opacity: [0.45, 0.7, 0.45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
-=======
  main
 
       {/* Video Controls - Mobile optimized */}

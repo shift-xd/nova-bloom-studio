@@ -73,7 +73,6 @@ export function InterestsSection() {
               key={interest.title}
  codex/redesign-website-for-modern-look-j7cmqi
               className="glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-white/5"
-=======
               className={`glass-card rounded-xl md:rounded-2xl p-5 md:p-6 relative overflow-hidden group border border-white/10 text-center bg-gradient-to-br ${interest.gradient}`}
  main
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +97,7 @@ export function InterestsSection() {
 
               <motion.div
                 className={`inline-flex p-3 rounded-xl bg-white/5 mb-4 ${interest.iconColor}`}
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.1, rotate: 8 }}
                 transition={{ duration: 0.3, type: "spring" }}
               >
                 <interest.icon className="w-6 h-6 md:w-7 md:h-7" />
