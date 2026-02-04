@@ -8,7 +8,7 @@ interface Particle {
   size: number;
   duration: number;
   delay: number;
-  type: 'soul' | 'essence' | 'void';
+  type: 'orange' | 'sage' | 'cream';
 }
 
 interface SoulOrb {
@@ -17,7 +17,7 @@ interface SoulOrb {
   y: number;
   size: number;
   delay: number;
-  color: 'gold' | 'soul' | 'pale';
+  color: 'orange' | 'sage' | 'cream';
 }
 
 export function FloatingParticles() {
@@ -33,7 +33,7 @@ export function FloatingParticles() {
       size: Math.random() * 3 + 1.5,
       duration: Math.random() * 12 + 18,
       delay: Math.random() * 8,
-      type: ['soul', 'essence', 'void'][i % 3] as 'soul' | 'essence' | 'void',
+      type: ['orange', 'sage', 'cream'][i % 3] as 'orange' | 'sage' | 'cream',
     }));
   }, []);
 
@@ -48,31 +48,31 @@ export function FloatingParticles() {
       y: 10 + Math.random() * 80,
       size: 40 + Math.random() * 60,
       delay: i * 1.5,
-      color: ['gold', 'soul', 'pale'][i % 3] as 'gold' | 'soul' | 'pale',
+      color: ['orange', 'sage', 'cream'][i % 3] as 'orange' | 'sage' | 'cream',
     }));
   }, []);
 
   const getParticleColor = (type: string) => {
     switch (type) {
-      case 'soul': return 'hsla(200, 70%, 55%, 0.4)';
-      case 'essence': return 'hsla(40, 65%, 55%, 0.35)';
-      case 'void': return 'hsla(260, 40%, 40%, 0.3)';
-      default: return 'hsla(40, 65%, 55%, 0.3)';
+      case 'orange': return 'hsla(30, 100%, 53%, 0.4)';
+      case 'sage': return 'hsla(102, 18%, 70%, 0.35)';
+      case 'cream': return 'hsla(71, 35%, 85%, 0.3)';
+      default: return 'hsla(30, 100%, 53%, 0.3)';
     }
   };
 
   const getOrbGradient = (color: string) => {
     switch (color) {
-      case 'gold': return 'radial-gradient(circle, hsla(40, 65%, 55%, 0.12) 0%, hsla(40, 65%, 55%, 0.02) 50%, transparent 70%)';
-      case 'soul': return 'radial-gradient(circle, hsla(200, 70%, 55%, 0.1) 0%, hsla(200, 70%, 55%, 0.02) 50%, transparent 70%)';
-      case 'pale': return 'radial-gradient(circle, hsla(185, 55%, 60%, 0.08) 0%, hsla(185, 55%, 60%, 0.01) 50%, transparent 70%)';
-      default: return 'radial-gradient(circle, hsla(40, 65%, 55%, 0.1) 0%, transparent 70%)';
+      case 'orange': return 'radial-gradient(circle, hsla(30, 100%, 53%, 0.12) 0%, hsla(30, 100%, 53%, 0.02) 50%, transparent 70%)';
+      case 'sage': return 'radial-gradient(circle, hsla(102, 18%, 70%, 0.1) 0%, hsla(102, 18%, 70%, 0.02) 50%, transparent 70%)';
+      case 'cream': return 'radial-gradient(circle, hsla(71, 35%, 85%, 0.08) 0%, hsla(71, 35%, 85%, 0.01) 50%, transparent 70%)';
+      default: return 'radial-gradient(circle, hsla(30, 100%, 53%, 0.1) 0%, transparent 70%)';
     }
   };
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden gpu-accelerated">
-      {/* Large ambient soul orbs - smooth blob-like movement */}
+      {/* Large ambient orbs - smooth blob-like movement */}
       {soulOrbs.map((orb) => (
         <motion.div
           key={`orb-${orb.id}`}
@@ -128,7 +128,7 @@ export function FloatingParticles() {
         />
       ))}
 
-      {/* Void tendrils - subtle dark wisps */}
+      {/* Warm tendrils - subtle warm wisps */}
       {[...Array(3)].map((_, i) => (
         <motion.div
           key={`tendril-${i}`}
@@ -138,7 +138,7 @@ export function FloatingParticles() {
             bottom: '0%',
             width: 2,
             height: 150,
-            background: 'linear-gradient(to top, hsla(260, 30%, 20%, 0.3), transparent)',
+            background: 'linear-gradient(to top, hsla(30, 100%, 53%, 0.2), transparent)',
             filter: 'blur(3px)',
             transformOrigin: 'bottom center',
           }}
