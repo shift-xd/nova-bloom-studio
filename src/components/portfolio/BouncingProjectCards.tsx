@@ -1,8 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useCallback } from "react";
-import { ExternalLink, Stethoscope, Zap, Shield, Bot, Wrench, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ExternalLink, Stethoscope, Zap, Shield, Bot, Wrench, Github } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
-import useEmblaCarousel from "embla-carousel-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
@@ -43,15 +42,6 @@ export function BouncingProjectCards() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const isMobile = useIsMobile();
-  
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    align: "center",
-    skipSnaps: false,
-  });
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <section id="projects" className="py-16 md:py-24 relative overflow-hidden" ref={ref}>
@@ -63,6 +53,12 @@ export function BouncingProjectCards() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <img
+            src="/characters/raccoon-analyst.svg"
+            alt="Raccoon analyst"
+            className="mx-auto mb-4 w-20 sm:w-24 opacity-70"
+            loading="lazy"
+          />
           <BlurText
             text="My Projects"
             className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center flex flex-wrap"
@@ -144,75 +140,53 @@ export function BouncingProjectCards() {
           </div>
         )}
 
-        {/* Mobile - Swipable Carousel */}
+        {/* Mobile - Stacked Auto Carousel */}
         {isMobile && (
           <motion.div 
-            className="md:hidden relative mb-8"
+            className="md:hidden relative mb-10"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex">
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={project.title} 
-                    className="flex-none w-[85%] min-w-0 pl-4 first:pl-6"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.2 + index * 0.1, duration: 0.4, type: "spring" }}
-                  >
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div className="glass-card rounded-2xl p-6 border border-white/10 h-[200px] flex flex-col">
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
-                            <project.icon className="w-6 h-6 text-primary" />
-                          </div>
-                          <h3 className="font-heading font-bold text-lg text-foreground">
-                            {project.title}
-                          </h3>
-                        </div>
-                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-                          {project.description}
-                        </p>
-                        <div className="flex items-center gap-2 text-primary text-sm font-medium mt-4">
-                          <span>View Project</span>
-                          <ExternalLink size={14} />
-                        </div>
-                      </div>
-                    </motion.a>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="stacked-cards-container mx-auto max-w-sm">
+              {projects.map((project, index) => (
+                <motion.a
+                  key={project.title}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="stacked-card w-[85%] glass-card rounded-2xl p-6 border border-white/10 h-[210px] flex flex-col"
+                  style={{
+                    animationDuration: "12s",
+                    animationDelay: `${index * 2.4}s`,
+                    animationIterationCount: "infinite",
+                  }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.4, type: "spring" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
+                      <project.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-lg text-foreground">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                    {project.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-primary text-sm font-medium mt-4">
+                    <span>View Project</span>
+                    <ExternalLink size={14} />
+                  </div>
+                </motion.a>
+              ))}
             </div>
-
-            {/* Navigation Arrows */}
-            <div className="flex justify-center gap-4 mt-6">
-              <motion.button
-                onClick={scrollPrev}
-                className="w-10 h-10 rounded-full glass-card border border-white/10 flex items-center justify-center text-foreground"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Previous project"
-              >
-                <ChevronLeft size={20} />
-              </motion.button>
-              <motion.button
-                onClick={scrollNext}
-                className="w-10 h-10 rounded-full glass-card border border-white/10 flex items-center justify-center text-foreground"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Next project"
-              >
-                <ChevronRight size={20} />
-              </motion.button>
-            </div>
+            <p className="text-center text-xs text-muted-foreground/80 mt-6">
+              Auto-swiping through the stack — tap a card to open.
+            </p>
           </motion.div>
         )}
 
