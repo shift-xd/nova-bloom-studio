@@ -64,14 +64,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Hollow Knight palette
-        gold: "hsl(var(--color-gold))",
-        amber: "hsl(var(--color-amber))",
-        soul: "hsl(var(--color-soul))",
-        void: "hsl(var(--color-void))",
-        pale: "hsl(var(--color-pale))",
-        lifeblood: "hsl(var(--color-lifeblood))",
-        charm: "hsl(var(--color-charm))",
+        // Warm vintage palette
+        orange: "hsl(var(--color-orange))",
+        sage: "hsl(var(--color-sage))",
+        cream: "hsl(var(--color-cream))",
+        dark: "hsl(var(--color-dark))",
+        charcoal: "hsl(var(--color-charcoal))",
       },
       borderRadius: {
         lg: "var(--radius)",
