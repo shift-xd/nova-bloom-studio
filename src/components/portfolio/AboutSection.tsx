@@ -146,12 +146,6 @@ export function AboutSection() {
         >
           <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/10 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-70" />
-            <img
-              src="/characters/cool-shades.svg"
-              alt="Cool shade"
-              className="absolute -top-6 -right-6 w-24 opacity-30 hidden sm:block"
-              loading="lazy"
-            />
             <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex items-center gap-5">
                 <img
@@ -170,15 +164,6 @@ export function AboutSection() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-3 md:ml-auto">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs md:text-sm text-foreground/80">
-                  <img
-                    src="https://assets.hackclub.com/flag-orpheus.svg"
-                    alt="Hack Club flag"
-                    className="h-4 w-6"
-                    loading="lazy"
-                  />
-                  Hack Club flag
-                </span>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs md:text-sm text-foreground/80">
                   <Flag className="h-4 w-4 text-primary" />
                   Flag bearer
@@ -219,7 +204,7 @@ export function AboutSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + index * 0.08, duration: 0.4, type: "spring" }}
-                whileHover={{ y: -4, borderColor: "hsla(30, 100%, 53%, 0.4)" }}
+                whileHover={{ y: -4, borderColor: "hsla(262, 90%, 64%, 0.4)" }}
               >
                 <div className="character-illustration rounded-2xl bg-white/5 border border-white/10 p-3">
                   <img

@@ -65,24 +65,13 @@ export function HeroSection() {
     <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden px-4">
       {/* Ambient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/60" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_hsla(30,100%,53%,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_hsla(102,18%,70%,0.16),_transparent_60%)]" />
-      {floatingImages.map((image, index) => (
-        <motion.img
-          key={image.alt}
-          src={image.src}
-          alt={image.alt}
-          className={`absolute hidden sm:block floating-character ${image.className}`}
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 6 + index, repeat: Infinity, ease: "easeInOut" }}
-          loading="lazy"
-        />
-      ))}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_hsla(30,100%,53%,0.1),_transparent_55%),radial-gradient(circle_at_bottom,_hsla(102,18%,70%,0.08),_transparent_60%)]" />
       
       {/* Glowing orb effect */}
       <motion.div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[320px] md:w-[640px] h-[320px] md:h-[640px] rounded-full opacity-20"
         style={{
-          background: "radial-gradient(circle, hsla(30, 100%, 53%, 0.16) 0%, transparent 70%)",
+          background: "radial-gradient(circle, hsla(30, 100%, 53%, 0.12) 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.1, 1],
@@ -215,7 +204,7 @@ export function HeroSection() {
               <motion.div
                 className="absolute inset-0 rounded-full md:hidden"
                 style={{
-                  background: "radial-gradient(circle, hsla(102, 18%, 70%, 0.25) 0%, transparent 65%)",
+                  background: "radial-gradient(circle, hsla(30, 100%, 53%, 0.15) 0%, transparent 65%)",
                   filter: "blur(30px)",
                 }}
                 animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -225,7 +214,7 @@ export function HeroSection() {
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: "linear-gradient(135deg, hsla(30, 100%, 53%, 0.25), hsla(102, 18%, 70%, 0.16))",
+                  background: "linear-gradient(135deg, hsla(30, 100%, 53%, 0.2), hsla(102, 18%, 70%, 0.1))",
                   filter: "blur(50px)",
                 }}
                 animate={{
@@ -245,7 +234,7 @@ export function HeroSection() {
                 whileTap={{ scale: 1.03 }}
                 onClick={handleProfileClick}
                 style={{
-                  boxShadow: "0 0 80px hsla(30, 100%, 53%, 0.2)",
+                  boxShadow: "0 0 80px hsla(30, 100%, 53%, 0.15)",
                 }}
               >
                 <img
