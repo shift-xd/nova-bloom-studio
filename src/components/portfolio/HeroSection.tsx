@@ -13,6 +13,23 @@ const socialLinks = [
 const SECRET_URL = "https://gist.github.com/shift-xd/f80ee0786bf0dd683ffc02569a1ead34";
 const REQUIRED_CLICKS = 30;
 const RESET_TIME = 3000;
+const floatingImages = [
+  {
+    src: "/characters/orpheus.svg",
+    alt: "Orpheus",
+    className: "top-10 left-6 w-16 sm:w-20 md:w-24 opacity-70",
+  },
+  {
+    src: "/characters/curious-raccoon.svg",
+    alt: "Curious raccoon",
+    className: "top-24 right-6 w-14 sm:w-16 md:w-20 opacity-60",
+  },
+  {
+    src: "/characters/dreamer.svg",
+    alt: "Dreamer",
+    className: "bottom-10 left-10 w-12 sm:w-14 md:w-16 opacity-50",
+  },
+];
 
 export function HeroSection() {
   const [clickCount, setClickCount] = useState(0);

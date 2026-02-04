@@ -30,6 +30,22 @@ export function Footer() {
             ))}
           </div>
 
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+            <img
+              src="https://assets.hackclub.com/flag-orpheus.svg"
+              alt="Hack Club flag"
+              className="h-4 w-6"
+              loading="lazy"
+            />
+            <span>Hack Club member</span>
+            <img
+              src="/characters/cool-shades.svg"
+              alt="Cool shade"
+              className="h-6 w-8 opacity-60"
+              loading="lazy"
+            />
+          </div>
+
           {/* Copyright */}
           <p className="text-muted-foreground text-sm text-center">
             © {new Date().getFullYear()} Hardrik Thomas Shaji. All rights reserved.

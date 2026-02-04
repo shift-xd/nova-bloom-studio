@@ -53,6 +53,12 @@ export function BouncingProjectCards() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <img
+            src="/characters/raccoon-analyst.svg"
+            alt="Raccoon analyst"
+            className="mx-auto mb-4 w-20 sm:w-24 opacity-70"
+            loading="lazy"
+          />
           <BlurText
             text="My Projects"
             className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-primary mb-4 justify-center flex flex-wrap"
