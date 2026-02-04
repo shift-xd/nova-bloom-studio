@@ -106,7 +106,7 @@ export function BouncingProjectCards() {
                     className="w-full h-full rounded-2xl overflow-hidden glass-card border border-white/10"
                     style={{
                       boxShadow: isHovered 
-                        ? "0 25px 50px rgba(0,0,0,0.5), 0 0 30px hsla(262, 90%, 64%, 0.2)" 
+                        ? "0 25px 50px rgba(0,0,0,0.5), 0 0 30px hsla(30, 100%, 53%, 0.22)" 
                         : "0 10px 30px rgba(0,0,0,0.4)",
                     }}
                   >

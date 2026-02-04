@@ -65,7 +65,7 @@ export function HeroSection() {
     <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden px-4">
       {/* Ambient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/60" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_hsla(262,90%,64%,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_hsla(196,90%,60%,0.14),_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_hsla(30,100%,53%,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_hsla(102,18%,70%,0.16),_transparent_60%)]" />
       {floatingImages.map((image, index) => (
         <motion.img
           key={image.alt}
@@ -82,7 +82,7 @@ export function HeroSection() {
       <motion.div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[320px] md:w-[640px] h-[320px] md:h-[640px] rounded-full opacity-20"
         style={{
-          background: "radial-gradient(circle, hsla(262, 90%, 64%, 0.16) 0%, transparent 70%)",
+          background: "radial-gradient(circle, hsla(30, 100%, 53%, 0.16) 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.1, 1],
@@ -156,7 +156,7 @@ export function HeroSection() {
             >
               <motion.button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold rounded-full transition-all duration-300 text-sm md:text-base btn-premium shadow-[0_20px_50px_hsla(262,90%,64%,0.25)]"
+                className="w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold rounded-full transition-all duration-300 text-sm md:text-base btn-premium shadow-[0_20px_50px_hsla(30,100%,53%,0.25)]"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -215,7 +215,7 @@ export function HeroSection() {
               <motion.div
                 className="absolute inset-0 rounded-full md:hidden"
                 style={{
-                  background: "radial-gradient(circle, hsla(196, 90%, 60%, 0.2) 0%, transparent 65%)",
+                  background: "radial-gradient(circle, hsla(102, 18%, 70%, 0.25) 0%, transparent 65%)",
                   filter: "blur(30px)",
                 }}
                 animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -225,7 +225,7 @@ export function HeroSection() {
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: "linear-gradient(135deg, hsla(262, 90%, 64%, 0.25), hsla(196, 90%, 60%, 0.12))",
+                  background: "linear-gradient(135deg, hsla(30, 100%, 53%, 0.25), hsla(102, 18%, 70%, 0.16))",
                   filter: "blur(50px)",
                 }}
                 animate={{
@@ -241,11 +241,11 @@ export function HeroSection() {
               {/* Image container with click counter */}
               <motion.div
                 className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border border-white/15 cursor-pointer"
-                whileHover={{ scale: 1.02, borderColor: "hsla(262, 90%, 64%, 0.45)" }}
+                whileHover={{ scale: 1.02, borderColor: "hsla(30, 100%, 53%, 0.45)" }}
                 whileTap={{ scale: 1.03 }}
                 onClick={handleProfileClick}
                 style={{
-                  boxShadow: "0 0 80px hsla(262, 90%, 64%, 0.2)",
+                  boxShadow: "0 0 80px hsla(30, 100%, 53%, 0.2)",
                 }}
               >
                 <img

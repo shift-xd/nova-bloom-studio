@@ -119,7 +119,7 @@ export function AboutSection() {
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: "spring" }}
                 whileHover={{ 
                   scale: 1.02, 
-                  borderColor: "hsla(262, 90%, 64%, 0.35)",
+                  borderColor: "hsla(30, 100%, 53%, 0.35)",
                 }}
               >
                 {/* Glow effect on hover */}
@@ -219,7 +219,7 @@ export function AboutSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + index * 0.08, duration: 0.4, type: "spring" }}
-                whileHover={{ y: -4, borderColor: "hsla(262, 90%, 64%, 0.4)" }}
+                whileHover={{ y: -4, borderColor: "hsla(30, 100%, 53%, 0.4)" }}
               >
                 <div className="character-illustration rounded-2xl bg-white/5 border border-white/10 p-3">
                   <img
