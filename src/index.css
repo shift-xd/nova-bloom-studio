@@ -294,6 +294,11 @@ html {
     animation-fill-mode: both;
   }
 
+  .floating-character {
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.35));
+    pointer-events: none;
+  }
+
   .character-card {
     transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   }
