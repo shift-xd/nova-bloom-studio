@@ -84,11 +84,17 @@ export function VideoBackground() {
 
       {/* Video Overlay */}
       <div className="fixed inset-0 -z-10 bg-background/70 backdrop-blur-[4px]" />
+codex/redesign-website-for-modern-look-j7cmqi
       <motion.div
-        className="fixed inset-0 -z-10 bg-background/10"
-        animate={{ opacity: [0.2, 0.35, 0.2] }}
+        className="fixed inset-0 -z-10 opacity-70"
+        style={{
+          background:
+            "radial-gradient(circle at top, hsla(262, 90%, 64%, 0.2), transparent 55%), radial-gradient(circle at bottom, hsla(196, 90%, 60%, 0.18), transparent 60%)",
+        }}
+        animate={{ opacity: [0.45, 0.7, 0.45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
+ main
 
       {/* Video Controls - Mobile optimized */}
       {!hasError && (

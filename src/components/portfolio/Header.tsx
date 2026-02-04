@@ -60,7 +60,9 @@ export function Header() {
               whileTap={{ scale: 0.95 }}
             >
               Hardrik
-              <span className="text-primary">.</span>
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                .
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}

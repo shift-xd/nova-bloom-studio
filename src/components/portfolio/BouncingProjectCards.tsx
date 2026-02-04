@@ -169,7 +169,7 @@ export function BouncingProjectCards() {
                       className="block"
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="glass-card rounded-2xl p-6 border border-white/10 h-[200px] flex flex-col float-soft">
+                      <div className="glass-card rounded-2xl p-6 border border-white/10 h-[200px] flex flex-col">
                         <div className="flex items-center gap-4 mb-4">
                           <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
                             <project.icon className="w-6 h-6 text-primary" />

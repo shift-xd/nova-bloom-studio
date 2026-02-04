@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Instagram, Github, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 import BlurText from "@/components/ui/BlurText";
 
 const contactMethods = [
@@ -11,18 +12,27 @@ const contactMethods = [
     label: "Email",
     value: "lastsurvivor857@gmail.com",
     href: "mailto:lastsurvivor857@gmail.com",
+ codex/redesign-website-for-modern-look-j7cmqi
+    gradient: "from-primary/15 to-accent/10",
+ main
   },
   {
     icon: Instagram,
     label: "Instagram",
     value: "@_shift_xd_",
     href: "https://www.instagram.com/_shift_xd_/",
+ codex/redesign-website-for-modern-look-j7cmqi
+    gradient: "from-violet-500/15 to-cyan-500/10",
+ main
   },
   {
     icon: Github,
     label: "GitHub",
     value: "shift-xd",
     href: "https://github.com/shift-xd",
+ codex/redesign-website-for-modern-look-j7cmqi
+    gradient: "from-slate-500/20 to-white/5",
+ main
   },
 ];
 
@@ -30,6 +40,7 @@ export function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
+  const isMobile = useIsMobile();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -86,14 +97,31 @@ export function ContactSection() {
                 href={method.href}
                 target={method.label !== "Email" ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 glass-card rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300 group bg-white/5 float-soft"
+ codex/redesign-website-for-modern-look-j7cmqi
+                className="flex items-center gap-4 glass-card rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300 group bg-white/5"
+                className={`flex items-center gap-4 glass-card rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all duration-300 group bg-gradient-to-br ${method.gradient}`}
+ main
                 initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{
-                  delay: 0.3 + index * 0.1,
-                  duration: 0.4,
-                  type: "spring",
-                }}
+                animate={
+                  isInView
+                    ? { opacity: 1, x: 0, y: isMobile ? [0, -6, 0] : 0 }
+                    : {}
+                }
+                transition={
+                  isMobile
+                    ? {
+                        delay: 0.3 + index * 0.1,
+                        duration: 3.5,
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatType: "mirror",
+                      }
+                    : {
+                        delay: 0.3 + index * 0.1,
+                        duration: 0.4,
+                        type: "spring",
+                      }
+                }
                 whileHover={{ x: 8, scale: 1.02 }}
               >
                 <motion.div 
@@ -115,7 +143,7 @@ export function ContactSection() {
           {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            className="flex-1 glass-card rounded-2xl p-5 md:p-6 border border-white/10 float-soft"
+            className="flex-1 glass-card rounded-2xl p-5 md:p-6 border border-white/10"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6, type: "spring", damping: 25 }}
@@ -155,7 +183,7 @@ export function ContactSection() {
               />
               <motion.button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-300 text-sm md:text-base btn-premium"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold rounded-xl transition-all duration-300 text-sm md:text-base btn-premium"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >

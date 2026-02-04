@@ -84,18 +84,18 @@ export function AboutSection() {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="glass-card rounded-xl p-4 md:p-6 border border-white/10 text-center relative overflow-hidden group float-soft"
+                className="glass-card rounded-xl p-4 md:p-6 border border-white/10 text-center relative overflow-hidden group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.4, type: "spring" }}
                 whileHover={{ 
                   scale: 1.02, 
-                  borderColor: "hsla(210, 70%, 55%, 0.35)",
+                  borderColor: "hsla(262, 90%, 64%, 0.35)",
                 }}
               >
                 {/* Glow effect on hover */}
                 <motion.div
-                  className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
                 
                 <p className="text-2xl md:text-3xl font-heading font-bold text-primary mb-1 relative z-10">

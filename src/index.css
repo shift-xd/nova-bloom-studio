@@ -8,9 +8,9 @@
 
 @layer base {
   :root {
-    /* Modern neutral slate theme with solid accents */
-    --background: 220 24% 8%;
-    --foreground: 210 20% 96%;
+    /* Modern midnight theme with violet & cyan accents */
+    --background: 224 50% 6%;
+    --foreground: 210 40% 96%;
 
     /* Card */
     --card: 224 32% 10%;
@@ -19,21 +19,21 @@
     --popover: 224 32% 10%;
     --popover-foreground: 210 40% 96%;
 
-    /* Primary - Soft Blue */
-    --primary: 210 70% 55%;
-    --primary-foreground: 220 24% 8%;
+    /* Primary - Electric Violet */
+    --primary: 262 90% 64%;
+    --primary-foreground: 224 50% 6%;
 
-    /* Secondary */
-    --secondary: 210 30% 22%;
-    --secondary-foreground: 210 20% 96%;
+    /* Secondary - Arctic Cyan */
+    --secondary: 190 85% 55%;
+    --secondary-foreground: 224 50% 6%;
 
     /* Muted */
     --muted: 224 20% 16%;
     --muted-foreground: 215 18% 70%;
 
     /* Accent */
-    --accent: 210 70% 55%;
-    --accent-foreground: 220 24% 8%;
+    --accent: 196 90% 60%;
+    --accent-foreground: 224 50% 6%;
 
     /* Destructive */
     --destructive: 0 85% 55%;
@@ -41,28 +41,30 @@
 
     --border: 224 22% 18%;
     --input: 224 22% 14%;
-    --ring: 210 70% 55%;
+    --ring: 262 90% 64%;
 
     --radius: 1rem;
 
     /* Modern palette */
-    --color-blue: 210 70% 55%;
-    --color-ink: 220 24% 8%;
+    --color-violet: 262 90% 64%;
+    --color-cyan: 190 85% 55%;
+    --color-ice: 196 90% 60%;
+    --color-ink: 224 50% 6%;
     --color-slate: 224 32% 10%;
-    --color-glow: 210 70% 55%;
+    --color-glow: 262 90% 64%;
 
-    /* Custom gradients (unused for solid theme) */
-    --gradient-primary: none;
-    --gradient-subtle: none;
-    --gradient-glow: none;
-    --gradient-soul: none;
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262, 90%, 64%) 0%, hsl(196, 90%, 60%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(224, 32%, 12%) 0%, hsl(224, 50%, 6%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsla(262, 90%, 64%, 0.15) 0%, transparent 70%);
+    --gradient-soul: linear-gradient(135deg, hsl(196, 90%, 60%) 0%, hsl(190, 85%, 55%) 100%);
 
     /* Premium shadows */
     --shadow-sm: 0 2px 12px hsla(224, 50%, 6%, 0.35);
     --shadow-md: 0 14px 40px hsla(224, 50%, 6%, 0.45);
     --shadow-lg: 0 28px 70px hsla(224, 50%, 6%, 0.55);
-    --shadow-glow: 0 0 45px hsla(210, 70%, 55%, 0.18);
-    --shadow-soul: 0 0 35px hsla(210, 70%, 55%, 0.12);
+    --shadow-glow: 0 0 45px hsla(262, 90%, 64%, 0.2);
+    --shadow-soul: 0 0 35px hsla(196, 90%, 60%, 0.18);
 
     /* Glass effect */
     --glass-bg: hsla(224, 32%, 10%, 0.7);
@@ -70,12 +72,12 @@
 
     --sidebar-background: 224 32% 8%;
     --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 210 70% 55%;
+    --sidebar-primary: 262 90% 64%;
     --sidebar-primary-foreground: 224 50% 6%;
     --sidebar-accent: 224 22% 14%;
     --sidebar-accent-foreground: 210 40% 96%;
     --sidebar-border: 224 22% 18%;
-    --sidebar-ring: 210 70% 55%;
+    --sidebar-ring: 262 90% 64%;
   }
 }
 
@@ -183,16 +185,7 @@ html {
   /* Section divider */
   .section-divider {
     height: 1px;
-    background: hsl(var(--border));
-  }
-
-  .float-soft {
-    animation: floatSoft 5s ease-in-out infinite;
-  }
-
-  @keyframes floatSoft {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.35), hsl(var(--accent) / 0.3), transparent);
   }
 
   /* Premium floating animation */
