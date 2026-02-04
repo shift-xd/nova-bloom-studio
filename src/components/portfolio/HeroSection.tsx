@@ -46,37 +46,19 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden px-4">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/10" />
-      
-      {/* Glowing orb effect */}
-      <motion.div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full opacity-20"
-        style={{
-          background: "radial-gradient(circle, hsla(355, 75%, 55%, 0.15) 0%, transparent 70%)",
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.15, 0.25, 0.15],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="absolute inset-0 bg-background" />
 
       <div className="container mx-auto px-2 md:px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12">
           {/* Text Content */}
           <motion.div
-            className="flex-1 text-center lg:text-left max-w-xl"
+            className="flex-1 text-center lg:text-left max-w-xl order-2 lg:order-1"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           >
             <motion.p
-              className="text-primary/80 font-medium mb-3 md:mb-4 tracking-wider text-xs md:text-sm"
+              className="text-primary/80 font-medium mb-3 md:mb-4 tracking-[0.3em] text-xs md:text-sm uppercase"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -93,7 +75,7 @@ export function HeroSection() {
             />
 
             <motion.div
-              className="text-lg md:text-xl lg:text-2xl text-primary font-medium mb-4 md:mb-6 flex items-center gap-2 justify-center lg:justify-start flex-wrap"
+              className="text-lg md:text-xl lg:text-2xl text-primary font-semibold mb-4 md:mb-6 flex items-center gap-2 justify-center lg:justify-start flex-wrap"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -127,8 +109,8 @@ export function HeroSection() {
             >
               <motion.button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-300 text-sm md:text-base btn-premium"
-                whileHover={{ scale: 1.02, y: -2 }}
+                className="w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 bg-primary text-primary-foreground font-semibold rounded-full transition-all duration-300 text-sm md:text-base btn-premium shadow-[0_20px_50px_hsla(210,70%,55%,0.25)]"
+                whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Get In Touch
@@ -136,8 +118,8 @@ export function HeroSection() {
 
               <motion.button
                 onClick={() => scrollToSection("#projects")}
-                className="w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 border border-white/10 text-foreground font-semibold rounded-xl hover:bg-white/5 transition-all duration-300 text-sm md:text-base"
-                whileHover={{ scale: 1.02, y: -2 }}
+                className="w-full sm:w-auto px-6 md:px-8 py-2.5 md:py-3 border border-white/10 text-foreground font-semibold rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 text-sm md:text-base"
+                whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.98 }}
               >
                 View Projects
@@ -157,7 +139,7 @@ export function HeroSection() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-xl glass-card border border-white/5 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/30 transition-all duration-300"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full glass-card border border-white/10 flex items-center justify-center text-foreground/70 hover:text-primary hover:border-primary/40 transition-all duration-300"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -173,17 +155,21 @@ export function HeroSection() {
 
           {/* Profile Image */}
           <motion.div
-            className="flex-1 flex justify-center"
+            className="flex-1 flex justify-center order-1 lg:order-2"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8, type: "spring", damping: 25 }}
           >
-            <div className="relative">
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
               {/* Outer glow ring */}
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: "linear-gradient(135deg, hsla(355, 75%, 55%, 0.2), hsla(175, 60%, 50%, 0.1))",
+                  background: "hsla(210, 70%, 55%, 0.16)",
                   filter: "blur(50px)",
                 }}
                 animate={{
@@ -198,12 +184,12 @@ export function HeroSection() {
               
               {/* Image container with click counter */}
               <motion.div
-                className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border border-white/10 cursor-pointer"
-                whileHover={{ scale: 1.02, borderColor: "hsla(355, 75%, 55%, 0.3)" }}
+                className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border border-white/15 cursor-pointer"
+                whileHover={{ scale: 1.03, rotate: 1, borderColor: "hsla(210, 70%, 55%, 0.4)" }}
                 whileTap={{ scale: 1.03 }}
                 onClick={handleProfileClick}
                 style={{
-                  boxShadow: "0 0 80px hsla(355, 75%, 55%, 0.15)",
+                  boxShadow: "0 0 80px hsla(210, 70%, 55%, 0.18)",
                 }}
               >
                 <img
@@ -213,7 +199,7 @@ export function HeroSection() {
                   draggable={false}
                 />
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
