@@ -28,7 +28,7 @@ export function SocialDock() {
       transition={{ delay: 1.5, duration: 0.6, type: "spring", damping: 25 }}
     >
       {/* Vertical line above */}
-      <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-primary/50 mx-auto" />
+      <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-primary/60 mx-auto" />
       
       {/* Social icons */}
       <div className="flex flex-col gap-2">
@@ -38,7 +38,7 @@ export function SocialDock() {
             href={social.href}
             target={social.label !== "Email" ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className="w-11 h-11 rounded-xl glass-card border border-white/5 flex items-center justify-center text-foreground/50 hover:text-primary hover:border-primary/30 transition-all duration-300"
+            className="w-11 h-11 rounded-full glass-card border border-white/10 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-all duration-300"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 1.7 + index * 0.1, type: "spring", stiffness: 200 }}
@@ -55,7 +55,7 @@ export function SocialDock() {
       </div>
       
       {/* Vertical line below */}
-      <div className="w-px h-16 bg-gradient-to-t from-transparent via-white/20 to-primary/50 mx-auto" />
+      <div className="w-px h-16 bg-gradient-to-t from-transparent via-white/20 to-primary/60 mx-auto" />
     </motion.div>
   );
 }

@@ -69,7 +69,7 @@ export function BouncingProjectCards() {
             delay={80}
             animateBy="characters"
           />
-          <div className="w-24 h-0.5 bg-primary/30 mx-auto" />
+          <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary/60 to-transparent mx-auto" />
         </motion.div>
 
         {/* Desktop - Stacked Bouncing Cards */}
@@ -107,10 +107,10 @@ export function BouncingProjectCards() {
                   onHoverEnd={() => setHoveredIndex(null)}
                 >
                   <div 
-                    className="w-full h-full rounded-2xl overflow-hidden glass-card border border-primary/10"
+                    className="w-full h-full rounded-2xl overflow-hidden glass-card border border-white/10"
                     style={{
                       boxShadow: isHovered 
-                        ? "0 25px 50px rgba(0,0,0,0.5), 0 0 30px hsla(40, 65%, 55%, 0.15)" 
+                        ? "0 25px 50px rgba(0,0,0,0.5), 0 0 30px hsla(262, 90%, 64%, 0.2)" 
                         : "0 10px 30px rgba(0,0,0,0.4)",
                     }}
                   >
@@ -166,9 +166,9 @@ export function BouncingProjectCards() {
                       className="block"
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="glass-card rounded-2xl p-6 border border-primary/10 h-[200px] flex flex-col">
+                      <div className="glass-card rounded-2xl p-6 border border-white/10 h-[200px] flex flex-col">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                          <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
                             <project.icon className="w-6 h-6 text-primary" />
                           </div>
                           <h3 className="font-heading font-bold text-lg text-foreground">
@@ -193,7 +193,7 @@ export function BouncingProjectCards() {
             <div className="flex justify-center gap-4 mt-6">
               <motion.button
                 onClick={scrollPrev}
-                className="w-10 h-10 rounded-full glass-card border border-primary/20 flex items-center justify-center text-foreground"
+                className="w-10 h-10 rounded-full glass-card border border-white/10 flex items-center justify-center text-foreground"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Previous project"
@@ -202,7 +202,7 @@ export function BouncingProjectCards() {
               </motion.button>
               <motion.button
                 onClick={scrollNext}
-                className="w-10 h-10 rounded-full glass-card border border-primary/20 flex items-center justify-center text-foreground"
+                className="w-10 h-10 rounded-full glass-card border border-white/10 flex items-center justify-center text-foreground"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Next project"
@@ -224,7 +224,7 @@ export function BouncingProjectCards() {
             href="https://github.com/shift-xd"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-xl border border-primary/20 text-foreground hover:text-primary hover:border-primary/40 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full border border-white/10 text-foreground hover:text-primary hover:border-primary/40 transition-all duration-300"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
