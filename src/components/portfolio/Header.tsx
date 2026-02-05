@@ -55,18 +55,15 @@ export function Header() {
                 e.preventDefault();
                 scrollToSection("#home");
               }}
-              className="flex items-center gap-3 text-xl md:text-2xl font-heading font-bold tracking-wide"
+              className="group flex items-center gap-2 text-xl md:text-2xl font-heading font-bold tracking-wide"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
             >
-              Hardrik
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                .
+              <span className="relative">
+                Hardrik
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
               </span>
-              <span className="hidden sm:inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-foreground/60">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                Member
-              </span>
+              <span className="text-primary animate-pulse">.</span>
             </motion.a>
 
             {/* Desktop Navigation */}
