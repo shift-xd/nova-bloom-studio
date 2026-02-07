@@ -66,10 +66,10 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [gistContent, setGistContent] = useState<{ filename: string; content: string }[]>([]);
   const [shake, setShake] = useState(false);
   const [attempts, setAttempts] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     if (isOpen && phase === "password") {
@@ -82,7 +82,6 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
       setPhase("password");
       setPassword("");
       setError(false);
-      setGistContent([]);
       setShowPassword(false);
       setAttempts(0);
     }
@@ -97,6 +96,91 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
     }
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
+
+  const buildGistIframe = () => {
+    // Build an HTML document that loads the gist script and styles it
+    const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body {
+            background: #1a1a1a;
+            color: #e2e8ce;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 16px;
+            overflow-x: hidden;
+          }
+          /* Override GitHub Gist styles for dark theme */
+          .gist .gist-file {
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            border-radius: 16px !important;
+            overflow: hidden !important;
+            background: #262626 !important;
+          }
+          .gist .gist-data {
+            background: #1e1e1e !important;
+            border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+            padding: 20px !important;
+          }
+          .gist .gist-meta {
+            background: #262626 !important;
+            color: rgba(226,232,206,0.4) !important;
+            padding: 10px 16px !important;
+          }
+          .gist .gist-meta a {
+            color: hsla(30, 100%, 53%, 0.7) !important;
+            text-decoration: none !important;
+          }
+          .gist .gist-meta a:hover {
+            color: hsla(30, 100%, 53%, 1) !important;
+          }
+          .gist .blob-wrapper {
+            border-radius: 8px !important;
+            overflow: hidden !important;
+          }
+          .gist table {
+            background: transparent !important;
+          }
+          .gist .blob-code {
+            background: #1e1e1e !important;
+            color: #e2e8ce !important;
+            font-size: 13px !important;
+            line-height: 1.8 !important;
+            padding: 4px 16px !important;
+            border: none !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+          }
+          .gist .blob-num {
+            background: #1a1a1a !important;
+            color: rgba(226,232,206,0.2) !important;
+            border-right: 1px solid rgba(255,255,255,0.05) !important;
+            padding: 4px 12px !important;
+          }
+          .gist .markdown-body {
+            color: #e2e8ce !important;
+            background: transparent !important;
+            font-size: 14px !important;
+            line-height: 1.8 !important;
+          }
+          .gist .pl-s, .gist .pl-pds { color: #ACBFA4 !important; }
+          .gist .pl-c1, .gist .pl-en { color: hsla(30, 100%, 60%, 1) !important; }
+          .gist .pl-k { color: #ACBFA4 !important; }
+          /* Hide the raw/download links that reveal gist URL */
+          .gist .gist-meta > a[href*="gist.github"] { display: none !important; }
+          .gist .gist-meta > a[href*="raw"] { display: none !important; }
+        </style>
+      </head>
+      <body>
+        <script src="https://gist.github.com/shift-xd/${GIST_ID}.js"><\/script>
+      </body>
+      </html>
+    `;
+    return `data:text/html;charset=utf-8,${encodeURIComponent(html)}`;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,16 +197,8 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
     setError(false);
     setPhase("loading");
 
-    try {
-      const res = await fetch(`https://api.github.com/gists/${GIST_ID}`);
-      const data = await res.json();
-      const files = Object.values(data.files) as { filename: string; content: string }[];
-      setGistContent(files);
-      setPhase("content");
-    } catch {
-      setGistContent([{ filename: "Error", content: "Failed to load content. Try again later." }]);
-      setPhase("content");
-    }
+    // Give the iframe a moment to load
+    setTimeout(() => setPhase("content"), 1500);
   };
 
   return (
@@ -394,7 +470,7 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
                         Vault Unlocked
                       </h3>
                       <p className="text-[10px] text-muted-foreground/50 tracking-wider uppercase">
-                        {gistContent.length} file{gistContent.length !== 1 ? "s" : ""} decrypted
+                        Content decrypted successfully
                       </p>
                     </div>
                     <div className="ml-auto flex items-center gap-1.5">
@@ -403,36 +479,15 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
                     </div>
                   </div>
 
-                  {/* Scrollable content */}
-                  <div className="overflow-y-auto p-6 flex-1 space-y-6">
-                    {gistContent.map((file, index) => (
-                      <motion.div
-                        key={file.filename}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.15, type: "spring", damping: 20 }}
-                      >
-                        {/* File header */}
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-2 h-2 rounded-full bg-primary/50" />
-                          <h4 className="text-xs font-mono text-primary/70 tracking-wider">
-                            {file.filename}
-                          </h4>
-                          <div className="flex-1 h-px bg-gradient-to-r from-white/5 to-transparent" />
-                        </div>
-
-                        {/* File content */}
-                        <div className="relative rounded-2xl bg-background/50 border border-white/5 p-5 overflow-x-auto group">
-                          {/* Corner accents */}
-                          <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary/15 rounded-tl-lg" />
-                          <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary/15 rounded-br-lg" />
-
-                          <p className="text-sm text-foreground/80 leading-[1.8] whitespace-pre-wrap break-words font-sans">
-                            {file.content}
-                          </p>
-                        </div>
-                      </motion.div>
-                    ))}
+                  {/* Embedded Gist via iframe */}
+                  <div className="flex-1 min-h-[400px] md:min-h-[500px]">
+                    <iframe
+                      ref={iframeRef}
+                      src={buildGistIframe()}
+                      className="w-full h-full min-h-[400px] md:min-h-[500px] border-0"
+                      sandbox="allow-scripts allow-same-origin"
+                      title="Secret Content"
+                    />
                   </div>
 
                   {/* Footer */}
