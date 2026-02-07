@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { ArrowDown, Github, Instagram, Mail } from "lucide-react";
 import BlurText from "@/components/ui/BlurText";
 import RotatingText from "@/components/ui/RotatingText";
+import { SecretOverlay } from "./SecretOverlay";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/shift-xd", label: "GitHub" },
@@ -10,7 +11,6 @@ const socialLinks = [
   { icon: Mail, href: "mailto:lastsurvivor857@gmail.com", label: "Email" },
 ];
 
-const SECRET_URL = "https://gist.github.com/shift-xd/f80ee0786bf0dd683ffc02569a1ead34";
 const REQUIRED_CLICKS = 30;
 const RESET_TIME = 3000;
 const floatingImages = [
@@ -33,6 +33,7 @@ const floatingImages = [
 
 export function HeroSection() {
   const [clickCount, setClickCount] = useState(0);
+  const [showSecret, setShowSecret] = useState(false);
   const lastClickTimeRef = useRef(0);
 
   const handleProfileClick = () => {
@@ -47,7 +48,7 @@ export function HeroSection() {
 
     if (clickCount + 1 >= REQUIRED_CLICKS) {
       setClickCount(0);
-      window.location.href = SECRET_URL;
+      setShowSecret(true);
     }
   };
 
@@ -62,6 +63,7 @@ export function HeroSection() {
   };
 
   return (
+    <>
     <section id="home" className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden px-4">
       {/* Ambient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/60" />
@@ -268,5 +270,7 @@ export function HeroSection() {
         </motion.div>
       </div>
     </section>
+    <SecretOverlay isOpen={showSecret} onClose={() => setShowSecret(false)} />
+    </>
   );
 }
