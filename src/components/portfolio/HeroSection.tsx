@@ -11,7 +11,7 @@ const socialLinks = [
   { icon: Mail, href: "mailto:lastsurvivor857@gmail.com", label: "Email" },
 ];
 
-const REQUIRED_CLICKS = 30;
+const REQUIRED_CLICKS = 20;
 const RESET_TIME = 3000;
 const floatingImages = [
   {
