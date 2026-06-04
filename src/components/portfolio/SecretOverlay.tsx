@@ -220,7 +220,9 @@ export function SecretOverlay({ isOpen, onClose }: SecretOverlayProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={() => {
+              if (phase !== "password") onClose();
+            }}
           />
 
           {/* Ambient glow */}
